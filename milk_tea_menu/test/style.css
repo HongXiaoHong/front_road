@@ -28,7 +28,7 @@ main {
 }
 /* 标题 */
 h1, h2 {
-    /* todo 字体 */
+    /* todo 怎么将上面的定义放到全局 字体 */
     font-family:'MyWebFont', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
