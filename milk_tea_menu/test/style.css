@@ -22,14 +22,11 @@ main {
     max-width: 500px;
 }
 
-@font-face {
-    font-family: 'MyWebFont';
-    src:  url("../../resource/font/SmileySans-Oblique.otf.woff2") format('woff2');
-}
+
 /* 标题 */
 h1, h2 {
-    /* todo 怎么将上面的定义放到全局 字体 */
-    font-family:'MyWebFont', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    /* 字体 */
+    font-family:'SmileySans', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 h1 {
