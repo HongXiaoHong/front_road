@@ -25,8 +25,6 @@ hong_dao_milk_tea_menu_app.html
 
 ![弘道](https://raw.githubusercontent.com/HongXiaoHong/images/main/python/msedge_Oo8R3hk0bk.png)
 
-
-
 ## 吸烟有害健康
 
 抽烟有害健康 能戒还是戒了吧
@@ -34,3 +32,13 @@ hong_dao_milk_tea_menu_app.html
 color_maker\index.html
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/python/msedge_ZbLQPiZVak.png)
+
+
+
+## 弘道会员注册
+
+要吸纳用户 当然需要用户注册登录功能啦
+
+membership_registration/membership_registration_app.html
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/python/127.0.0.1_5500_membership_registration_membership_registration_app.html.png)
