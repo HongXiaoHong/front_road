@@ -46,6 +46,7 @@ input, textarea, select {
     margin-top: 0.5em;
     color:#e2e1e4;
     font-family: "SmileySans";
+    border-radius: 5px;
 }
 
 /*单选框多选框不独占一行*/
