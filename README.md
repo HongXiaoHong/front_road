@@ -3,6 +3,9 @@
 # front_road
 
 前端之路开启了
+
+[Java/前端/Go/大数据/C学习路线分享 - 哔哩哔哩 (bilibili.com)](https://www.bilibili.com/read/cv14023271?spm_id_from=333.999.0.0)
+
 在项目中磨练自己
 
 [freecodecamp](https://www.freecodecamp.org/learn)
@@ -33,8 +36,6 @@ color_maker\index.html
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/python/msedge_ZbLQPiZVak.png)
 
-
-
 ## 弘道会员注册
 
 要吸纳用户 当然需要用户注册登录功能啦
@@ -42,3 +43,35 @@ color_maker\index.html
 membership_registration/membership_registration_app.html
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/python/127.0.0.1_5500_membership_registration_membership_registration_app.html.png)
+
+## 调查问卷
+
+调查
+
+survey/survey.html
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/python/127.0.0.1_5500_survey_survey.html.png)
+
+## 罗斯科艺术画
+
+马克·罗斯科 的艺术风格说白了就是用单一的色彩单一的形式表现出人的情绪，形成了自己完全抽象的色域绘画风格
+
+rothko\rothko.html
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/python/127.0.0.1_5500_rothko_rothko.html.png)
+
+## 猫咪展馆
+
+主要用于练习 flex 布局
+
+根据窗口大小 改变图片布局
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/html/msedge_L2iQ4FQFyp.gif)
+
+## 营养表
+
+制作一张营养表
+
+nutrition_facts\nutrition_facts_app.html
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/python/127.0.0.1_5500_nutrition_facts_nutrition_facts_app.html.png)
