@@ -19,9 +19,22 @@ body {
     border-radius: 5px;
 }
 
+@media (max-width: 460px) {
+    #main {
+      margin: 0;
+    }
+  }
+
 h1 {
     font-size: 4rem;
     margin-bottom: 0;
+}
+
+@media (max-width: 460px) {
+    h1 {
+        font-size: 3.5rem;
+        line-height: 1.2;
+    }
 }
 
 img {
@@ -39,6 +52,12 @@ img {
 #img-caption{
     margin: 15px 0 5px 0;
 }
+
+@media (max-width: 460px) {
+    #img-caption {
+      font-size: 1.4rem;
+    }
+  }
 
 ul {
     max-width: 550px;
