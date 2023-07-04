@@ -75,3 +75,11 @@ rothko\rothko.html
 nutrition_facts\nutrition_facts_app.html
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/python/127.0.0.1_5500_nutrition_facts_nutrition_facts_app.html.png)
+
+### 致敬
+
+国外致敬水稻专家
+
+tribute/tribute.html
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/ImageGlass_JdLs7ia8YR.png)
