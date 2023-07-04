@@ -80,6 +80,16 @@ nutrition_facts\nutrition_facts_app.html
 
 国外致敬水稻专家
 
+[致敬](http://127.0.0.1:5500/tribute/tribute.html)
+
 tribute/tribute.html
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/ImageGlass_JdLs7ia8YR.png)
+
+### 吃定彩虹
+
+[吃定彩虹](http://127.0.0.1:5500/rainbow/rainbow.html)
+
+
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_OdLncoLg9Y.png)
