@@ -1,7 +1,7 @@
 ### 动画学习
 
-@keyframes 定义动画的旋转
-animation 去使用动画的旋转
+@keyframes 定义动画的每一帧变化
+animation 去使用动画的旋转快慢,使用哪个上面的帧变化
 ```css
 .wheel {
     border: 2px solid black;
