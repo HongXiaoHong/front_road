@@ -185,3 +185,11 @@ tribute/tribute.html
 [Ferris Wheel --- 摩天轮](http://127.0.0.1:5500/ferris_wheel/ferris_wheel.html)
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_3aniIEQ2ox.gif)
+
+
+
+企鹅
+
+[Penguin --- 企鹅](http://127.0.0.1:5500/penguin/penguin.html)
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_QPnthRRdf1.gif)
