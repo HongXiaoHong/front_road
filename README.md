@@ -146,8 +146,6 @@ tribute/tribute.html
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_tY5cRfHsKb.png)
 
-
-
 ### 高楼林立
 
 白天与黑夜
@@ -161,3 +159,11 @@ tribute/tribute.html
 黑夜
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_gFeqTggsdu.png)
+
+
+
+### magazine
+
+[Magazine](http://127.0.0.1:5500/magazine/magazine.html)
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/127.0.0.1_5500_magazine_magazine.html.png)
