@@ -177,3 +177,11 @@ tribute/tribute.html
 
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/product-landing_product-landing.html%20(2).png)
+
+
+
+### 摩天轮
+
+[Ferris Wheel --- 摩天轮](http://127.0.0.1:5500/ferris_wheel/ferris_wheel.html)
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_3aniIEQ2ox.gif)
