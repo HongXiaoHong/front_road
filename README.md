@@ -126,6 +126,24 @@ tribute/tribute.html
 
 ### html5 语义化标签
 
+[语义化标签](http://127.0.0.1:5500/semantic_tags/semantic_tags.html)
+
+[HTML：无障碍的良好基础 - 学习 Web 开发 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Learn/Accessibility/HTML)
+
+原先使用 table 标签就可以做出类似这样的布局, 但是H5更新了语义化标签
+
+为了让浏览器更好的识别, 还是使用语义化标签的好
+
 语义化标签练习
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_yaZRisj4kf.png)
+
+
+
+### 学习文档
+
+主要用来学些写语义化标签的使用,还有就是锚点的使用(id + #)
+
+[学习文档](http://127.0.0.1:5500/js_documents/js_documents.html)
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_tY5cRfHsKb.png)
