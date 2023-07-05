@@ -90,11 +90,7 @@ tribute/tribute.html
 
 [吃定彩虹](http://127.0.0.1:5500/rainbow/rainbow.html)
 
-
-
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_OdLncoLg9Y.png)
-
-
 
 ### 简历
 
@@ -104,8 +100,6 @@ tribute/tribute.html
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_SzTWdhGlPx.png)
 
-
-
 ### 开支平衡表
 
 [Balance Sheet --- 资产负债表](http://127.0.0.1:5500/balance_sheet/balance_sheet.html)
@@ -114,6 +108,14 @@ tribute/tribute.html
 - linear-gradient 实现固定长度的渐变的背景
 - display sticky 实现头信息固定
 
-
-
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_jO1JSCqOM8.png)
+
+
+
+### 毕加索风格作画
+
+[毕加索画作](http://127.0.0.1:5500/picasso/picasso.html)
+
+使用 z-index 进行层叠显示元素, 让不同的元素处于不同的平面
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_TwMwlUU7vN.png)
