@@ -103,3 +103,17 @@ tribute/tribute.html
 [带有头像的简历](http://127.0.0.1:5500/test/test.html)
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_SzTWdhGlPx.png)
+
+
+
+### 开支平衡表
+
+[Balance Sheet --- 资产负债表](http://127.0.0.1:5500/balance_sheet/balance_sheet.html)
+
+- 用 flex 与 justify-content flex-end   实现 头信息靠右
+- linear-gradient 实现固定长度的渐变的背景
+- display sticky 实现头信息固定
+
+
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_jO1JSCqOM8.png)
