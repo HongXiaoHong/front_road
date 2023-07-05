@@ -93,3 +93,13 @@ tribute/tribute.html
 
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_OdLncoLg9Y.png)
+
+
+
+### 简历
+
+使用flex布局做一个带有头像的简历
+
+[带有头像的简历](http://127.0.0.1:5500/test/test.html)
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_SzTWdhGlPx.png)
