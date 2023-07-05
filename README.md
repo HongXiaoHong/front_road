@@ -110,8 +110,6 @@ tribute/tribute.html
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_jO1JSCqOM8.png)
 
-
-
 ### 毕加索风格作画
 
 [毕加索画作](http://127.0.0.1:5500/picasso/picasso.html)
@@ -120,10 +118,14 @@ tribute/tribute.html
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_TwMwlUU7vN.png)
 
-
-
 ### 钢琴
 
 [Piano --- 钢琴](http://127.0.0.1:5500/piano/piano.html)
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_GHLAxSv6BE.png)
+
+### html5 语义化标签
+
+语义化标签练习
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_yaZRisj4kf.png)
