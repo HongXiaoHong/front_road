@@ -193,3 +193,15 @@ tribute/tribute.html
 [Penguin --- 企鹅](http://127.0.0.1:5500/penguin/penguin.html)
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_QPnthRRdf1.gif)
+
+
+
+
+
+### 项目展示
+
+[/personal_portfolio/personal_portfolio.html](http://127.0.0.1:5500/personal_portfolio/personal_portfolio.html)
+
+展示你的项目
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/personal_portfolio_personal_portfolio.html.png)
