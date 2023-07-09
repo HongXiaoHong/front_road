@@ -1,0 +1,146 @@
+:root {
+    --background-color-left: rgb(234, 26, 60);
+    --background-color-right: rgb(52, 194, 237);
+    --input-height: 4vh;
+    --select-height: 4.3vh;
+    --music_url_width: 30vw;
+    --input_font_size: 1.2rem;
+    box-sizing: border-box;
+}
+
+@keyframes dao {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+body {
+    background: linear-gradient(90deg, var(--background-color-left), var(--background-color-right));
+    height: 100vh;
+    overflow: hidden;
+    padding: 15vh 0;
+}
+
+.box {
+    position: relative;
+    margin: 0 auto;
+    width: 100px;
+    height: 200px;
+    background-color: black;
+    border-right: 100px solid white;
+    border-radius: 50%;
+    animation: dao 10s linear infinite;
+}
+
+.box::before {
+    content: "";
+    position: absolute;
+    left: 45px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    border: 40px solid black;
+}
+
+.box::after {
+    content: "";
+    position: absolute;
+    left: 45px;
+    bottom: 0px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    border: 40px solid white;
+}
+
+#title {
+    background-image: linear-gradient(to left, var(--background-color-left), var(--background-color-right));
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 30px;
+
+}
+
+#analyzer_container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+
+#music_magnetic_field_form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5vh;
+    color: var(--background-color-right);
+}
+
+.input_label {
+    margin-right: 1vw;
+    font-size: var(--input_font_size);
+}
+
+#music_url,
+#directory,
+#submit {
+    border-radius: 10px;
+    border: 0;
+    font-size: var(--input_font_size);
+}
+
+#music_url {
+    height: var(--input-height);
+    width: 30vw;
+    color: var(--background-color-left);
+}
+
+#submit {
+    height: 4.5vh;
+    background-image: linear-gradient(to left, var(--background-color-left), var(--background-color-right));
+    ;
+    color: white;
+}
+
+#directory {
+    height: var(--select-height);
+    width: 26.6vw;
+    color: var(--background-color-left);
+
+}
+
+@media(max-width: 1200px) {
+    select#directory {
+        width: 25vw;
+    }
+}
+
+@media(max-width: 700px) {
+    h2#title {
+        font-size: 1.4rem;
+    }
+
+    input#music_url {
+        display: block;
+        width: 100%;
+    }
+
+    select#directory {
+        display: block;
+        width: 100%;
+    }
+}
+
+
+
+#author {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: aliceblue;
+}
