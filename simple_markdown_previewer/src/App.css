@@ -1,7 +1,10 @@
 :root {
     --header-height: 4vh;
     --total-radius: 5px;
-    --markdown-height: 85vh;
+    --markdown-height: 82vh;
+    --content-padding: 10px;
+    --default-font-family: 'Microsoft YaHei', Arial, sans-serif;
+    --diy-font-family: 'SmileySans', Arial, sans-serif;
 }
 
 * {
@@ -14,14 +17,15 @@ body {
 
 h1#title {
     text-align: center;
+    font-family: "SmileySans", serif;
 }
 
 #markdown_container {
     display: flex;
-
     width: 100vw;
     height: 90vh;
-
+    column-gap: 5px;
+    padding: 0 20px;
 }
 
 .markdown_viewport {
@@ -31,8 +35,7 @@ h1#title {
 .markdown_viewport header {
     background-color: red;
     height: var(--header-height);
-    border-top-left-radius: var(--total-radius);
-    border-bottom-left-radius: var(--total-radius);
+    border-radius: var(--total-radius);
     line-height: var(--header-height);
     font-size: 1.3rem;
     color: aliceblue;
@@ -52,15 +55,27 @@ h1#title {
 .markdown_area {
     height: var(--markdown-height);
     width: 100%;
-    border-top: none;
     border: 1px solid red;
     border-radius: var(--total-radius);
 }
 
-section#markdown_content textarea {
-    resize: none;
+section#markdown_content {
+    font-family: var(--default-font-family);
 }
 
-span#default_preview_result {
-    color: grey;
+section#preview_content {
+    font-family: var(--diy-font-family);
+}
+
+section#markdown_content textarea {
+    resize: none;
+    font-size: 1.2rem;
+    padding: var(--content-padding);
+    font-family: var(--default-font-family);
+}
+
+div#preview_result {
+    padding: 0 var(--content-padding);
+    overflow-y: auto; /* 允许纵向滚动 */
+    overflow-x: hidden; /* 阻止横向滚动 */
 }
