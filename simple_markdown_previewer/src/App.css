@@ -1,0 +1,66 @@
+:root {
+    --header-height: 4vh;
+    --total-radius: 5px;
+    --markdown-height: 85vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+}
+
+h1#title {
+    text-align: center;
+}
+
+#markdown_container {
+    display: flex;
+
+    width: 100vw;
+    height: 90vh;
+
+}
+
+.markdown_viewport {
+    flex: 1
+}
+
+.markdown_viewport header {
+    background-color: red;
+    height: var(--header-height);
+    border-top-left-radius: var(--total-radius);
+    border-bottom-left-radius: var(--total-radius);
+    line-height: var(--header-height);
+    font-size: 1.3rem;
+    color: aliceblue;
+}
+
+.markdown_viewport header::before {
+    background-color: aquamarine;
+    width: 10px;
+    content: "";
+    height: var(--header-height);
+    float: left;
+    margin-right: 10px;
+    border-top-left-radius: var(--total-radius);
+    border-bottom-left-radius: var(--total-radius);
+}
+
+.markdown_area {
+    height: var(--markdown-height);
+    width: 100%;
+    border-top: none;
+    border: 1px solid red;
+    border-radius: var(--total-radius);
+}
+
+section#markdown_content textarea {
+    resize: none;
+}
+
+span#default_preview_result {
+    color: grey;
+}

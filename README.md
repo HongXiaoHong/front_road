@@ -16,6 +16,31 @@
 先写了一个 hello world
 把项目搭建起来先
 
+没 import
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_ux3ZdvuJOX.png)
+
+import 之后
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_nuAtcn2zhv.png)
+
+```
+Compiled with problems:
+ERROR in ./src/App.css 1:0
+Module parse failed: Unexpected token (1:0)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+> :root {
+|     --header-height: 4vh;
+|     --total-radius: 5px;
+```
+
+npm install --save-dev style-loader css-loader
+
+```json
+{
+test: /\.css$/,
+use: ['style-loader', 'css-loader'],
+},
+```
+
 ### 资料
 
 #### 创建 react 项目过程
@@ -151,7 +176,7 @@ npm install --save-dev @babel/core babel-loader @babel/preset-env @babel/preset-
 
 ##### 创建源代码文件
 
-新建src文件夹、index.js文件、App.js(Hello.js)文件。完成后，文件结构如下：
+新建src文件夹、index.js文件、App.js(App.js)文件。完成后，文件结构如下：
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/webstorm64_7kpwZtrvhJ.png)
 
@@ -179,28 +204,28 @@ npm install --save-dev @babel/core babel-loader @babel/preset-env @babel/preset-
 ```js
 import React from "react"
 import {createRoot} from "react-dom/client";
-import Hello from "./Hello";
+import App from "./App";
 import * as ReactDOM from "react-dom";
 
 
 const root = createRoot(document.getElementById("root"));
-root.render(<Hello name={"hong"}/>);
+root.render(<App name={"hong"}/>);
 
-// ReactDOM.render(<Hello name={"hong"}/>, document.getElementById("root"))
+// ReactDOM.render(<App name={"hong"}/>, document.getElementById("root"))
 ```
 
-###### Hello.js
+###### App.js
 
 ```js
 import React from "react"
 
-class Hello extends React.Component {
+class App extends React.Component {
     render() {
-        return <h1>Hello, {this.props.name}</h1>;
+        return <h1>App, {this.props.name}</h1>;
     }
 }
 
-export default Hello
+export default App
 ```
 
 ##### 配置Webpack
