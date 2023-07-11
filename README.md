@@ -10,7 +10,11 @@
 
 [freecodecamp](https://www.freecodecamp.org/learn)
 
-### simple_markdown_previewer | 平平无奇 markdown 预览器
+### simple_markdown_previewer | 平平无奇 markdown 编辑器
+
+使用 node/npm/react 搭建
+先写了一个 hello world
+把项目搭建起来先
 
 ### 资料
 
