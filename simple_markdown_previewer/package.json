@@ -12,6 +12,10 @@
   "author": "hong1",
   "license": "ISC",
   "dependencies": {
+    "highlight.js": "^11.8.0",
+    "marked": "^5.1.1",
+    "marked-highlight": "^2.0.1",
+    "marked-mangle": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

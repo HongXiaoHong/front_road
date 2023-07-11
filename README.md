@@ -41,6 +41,24 @@ use: ['style-loader', 'css-loader'],
 },
 ```
 
+```bash
+npm install marked
+```
+
+marked-mangle 使用HTML字符引用来修改邮件链接。
+
+```bash
+npm install marked-mangle
+
+```
+
+marked-highlight 代码高亮
+
+```bash
+npm install marked-highlight
+npm install highlight.js
+```
+
 ### 资料
 
 #### 创建 react 项目过程
