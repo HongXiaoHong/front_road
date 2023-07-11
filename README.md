@@ -34,8 +34,6 @@ url: 音乐磁场链接
 
 directory: 选择不同目录进行存放
 
-
-
 ```http
 POST http://localhost:8888/music/magnetic/field/download  
 Content-Type: application/json  
@@ -57,7 +55,68 @@ Content-Type: application/json
 
 https://www.jianshu.com/p/3a5bbfbf5957
 
+### 太极图案绘制
 
+思路使用
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_Yzg079gImK.png)
+
+通过边框画出一个圆
+
+再使用 before after 伪元素画出两个圆
+
+覆盖到中间, 通过重叠组合画出一个太极的图案
+
+[前端太极图怎么用一个盒子写出？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/386932078)
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_piP0FtY5QB.png)
+
+```html
+<body>
+    <div class="box"></div>
+</body>
+```
+
+css
+
+```css
+body {
+ background-color: #668;
+        }
+
+ .box {
+ position: relative;
+ margin: 0 auto;
+ width: 100px;
+ height: 200px;
+ background-color: black;
+ border-right: 100px solid white;
+ border-radius: 50%;
+        }
+
+ .box::before {
+ content: "";
+ position: absolute;
+ left: 45px;
+ width: 10px;
+ height: 10px;
+ border-radius: 50%;
+ background-color: white;
+ border: 45px solid black;
+        }
+
+ .box::after {
+ content: "";
+ position: absolute;
+ left: 45px;
+ bottom: 0px;
+ width: 10px;
+ height: 10px;
+ border-radius: 50%;
+ background-color: black;
+ border: 45px solid white;
+        }
+```
 
 ### 斗罗大陆
 
