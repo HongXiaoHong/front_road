@@ -1,7 +1,7 @@
 {
   "name": "simple_markdown_previewer",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
+  "description": "simple_markdown_previewer | 平平无奇 markdown 编辑器",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "build": "webpack"
   },
   "keywords": [],
-  "author": "",
+  "author": "hong1",
   "license": "ISC",
   "dependencies": {
     "react": "^18.2.0",
