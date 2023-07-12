@@ -3,7 +3,7 @@ import {marked} from "marked"
 import {mangle} from "marked-mangle";
 import {markedHighlight} from "marked-highlight";
 import hljs from 'highlight.js';
-import 'highlight.js/styles/monokai-sublime.css';
+import 'highlight.js/styles/tokyo-night-dark.css';
 import './App.css';
 
 
