@@ -36,7 +36,7 @@ markdown 内容
 - htmlwebpack-loader 加载 html
 - marked markdown 渲染成 html
   - marked-mangle 渲染邮箱到 a 链接
-  - marked-highlight 代码高亮
+  - marked-highlight 代码高亮 也可以使用 prismjs
   - highlight.js 代码高亮
 
 使用 node/npm/react 搭建
@@ -84,6 +84,17 @@ marked-highlight 代码高亮
 ```bash
 npm install marked-highlight
 npm install highlight.js
+```
+
+prismjs 示例
+
+```javascript
+marked.setOptions({
+  breaks: !0,
+  highlight: function (e) {
+    return Prism.highlight(e, Prism.languages.javascript, "javascript")
+  }
+});
 ```
 
 ### 资料
@@ -705,6 +716,15 @@ module.exports = {
 ### 参考
 
 - [从零搭建React项目 - 掘金 (juejin.cn)](https://juejin.cn/post/7134314981515853831)
+- [marked-mangle - npm --- 标记-mangle - npm (npmjs.com)](https://www.npmjs.com/package/marked-mangle)
+- [overflow - CSS：层叠样式表 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow)
+- [(43条消息) react 中使用 marked + highlight.js 使语法高亮_marked react_小钢炮vv的博客-CSDN博客](https://blog.csdn.net/qq_36754767/article/details/100582036)
+- [React中使用marked - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/102066070)
+- [marked - npm --- 标记 - npm (npmjs.com)](https://www.npmjs.com/package/marked)
+- [marked-highlight - npm (npmjs.com)](https://www.npmjs.com/package/marked-highlight)
+- [Hello World – React (reactjs.org)](https://zh-hant.legacy.reactjs.org/docs/hello-world.html)
+- [Prism --- 棱镜 (prismjs.com)](https://prismjs.com/#features-full)
+- [How To Embed a Prism Syntax Highlighter in React Apps | by Jennifer Fu | JavaScript in Plain English --- 如何在 React 应用程序中嵌入棱镜语法突出显示器 |作者：傅婷婷 |简明英语的JavaScript](https://javascript.plainenglish.io/how-to-embed-a-prism-syntax-highlighter-in-react-apps-70eb263be5d)
 
 # 风霜雪剑
 
@@ -715,15 +735,19 @@ print("hello python")
 ```
 
 ---
+
 这是一封离别信
+
 ```python
 print("letting go")
 ```
 
 ---
+
 # 风霜雪剑
 
 这是一封离别信
+
 ```python
 print("hello")
 ```
@@ -731,6 +755,7 @@ print("hello")
 # 风霜雪剑
 
 这是一封离别信
+
 ```python
 print("hello")
 ```
