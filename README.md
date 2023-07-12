@@ -14,36 +14,7 @@
 
 markdown 内容
 
-```markdown
-# 风霜雪剑
-
-## python
-
-```python
-print("hello python")
-```
-
----
-这是一封离别信
-```python
-print("letting go")
-```
-
----
-# 风霜雪剑
-
-这是一封离别信
-```python
-print("hello")
-```
-
-# 风霜雪剑
-
-这是一封离别信
-```python
-print("hello")
-```
-```
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_prU6JpWcCU.png)
 
 ![最终显示结果](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/6b3513b303dfd53ad667076b92342ba.png)
 
@@ -734,3 +705,32 @@ module.exports = {
 ### 参考
 
 - [从零搭建React项目 - 掘金 (juejin.cn)](https://juejin.cn/post/7134314981515853831)
+
+# 风霜雪剑
+
+## python
+
+```python
+print("hello python")
+```
+
+---
+这是一封离别信
+```python
+print("letting go")
+```
+
+---
+# 风霜雪剑
+
+这是一封离别信
+```python
+print("hello")
+```
+
+# 风霜雪剑
+
+这是一封离别信
+```python
+print("hello")
+```
