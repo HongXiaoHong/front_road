@@ -12,9 +12,65 @@
 
 ### simple_markdown_previewer | 平平无奇 markdown 编辑器
 
+markdown 内容
+
+```markdown
+# 风霜雪剑
+
+## python
+
+```python
+print("hello python")
+```
+
+---
+这是一封离别信
+```python
+print("letting go")
+```
+
+---
+# 风霜雪剑
+
+这是一封离别信
+```python
+print("hello")
+```
+
+# 风霜雪剑
+
+这是一封离别信
+```python
+print("hello")
+```
+```
+
+![最终显示结果](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/6b3513b303dfd53ad667076b92342ba.png)
+
+编辑效果
+
+![编辑效果](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_F6tmHmYTar.gif)
+
+#### 使用技术
+
+- html
+- css
+  - @font-face 定义字体
+- js
+- react 更好的操作页面以及数据
+- babel 编译 es6 以及 jsx
+- webpack 打包 只能加载 js 以及 json 所以需要下面的 loader
+- style-loader 加载 css
+- css-loader 加载 css
+- htmlwebpack-loader 加载 html
+- marked markdown 渲染成 html
+  - marked-mangle 渲染邮箱到 a 链接
+  - marked-highlight 代码高亮
+  - highlight.js 代码高亮
+
 使用 node/npm/react 搭建
 先写了一个 hello world
-把项目搭建起来先
+把项目搭建起来先 详见后面的搭建过程
 
 没 import
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_ux3ZdvuJOX.png)
