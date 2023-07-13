@@ -7,6 +7,7 @@
     --controller-height: 10vh;
     --slider-height: 2vh;
     --button-column-gap: 2vw;
+    --slide-button-color: #363433;
 }
 
 body {
@@ -72,6 +73,7 @@ body {
     align-items: center;
     background-color: #c0c4c3;
     height: var( --controller-height);
+    max-height: 88px;
 }
 
 #ball {
@@ -140,7 +142,7 @@ i.hide  {
     appearance: none;
     width: 25px; 
     height: var(--slider-height);
-    background: #4CAF50; 
+    background: var(--slide-button-color); 
     cursor: pointer;
     border-radius: 5px;
   }
@@ -148,7 +150,7 @@ i.hide  {
   .slider::-moz-range-thumb {
     width: 25px; 
     height: var(--slider-height);
-    background: #4CAF50; 
+    background: var(--slide-button-color); 
     cursor: pointer;
   }
   
