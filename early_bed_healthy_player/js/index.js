@@ -39,6 +39,10 @@ var doms = {
     container: document.querySelector('.container'),
 };
 
+function getCurTime() {
+    return doms.audio.currentTime;
+}
+
 /**
  * 计算出，在当前播放器播放到第几秒的情况下
  * lrcData数组中，应该高亮显示的歌词下标
@@ -46,7 +50,7 @@ var doms = {
  */
 function findIndex() {
     // 播放器当前时间
-    var curTime = doms.audio.currentTime;
+    var curTime = getCurTime();
     for (var i = 0; i < lrcData.length; i++) {
         if (curTime < lrcData[i].time) {
             return i - 1;
@@ -80,10 +84,25 @@ var liHeight = doms.ul.children[0].clientHeight;
 // 最大偏移量
 var maxOffset = doms.ul.clientHeight - containerHeight;
 
+function formatTime(timeInSeconds) {
+    // 去掉小数点，只保留整数
+    var seconds = Math.floor(timeInSeconds);
+
+    // 计算分钟数和秒数
+    var minutes = Math.floor(seconds / 60);
+    seconds = seconds % 60;
+
+    // 格式化为两位数
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    return minutes + ':' + seconds;
+}
 /**
  * 设置 ul 元素的偏移量
  */
 function setOffset() {
+    $("#palyed_time").text(formatTime(getCurTime()));
     var index = findIndex();
     var offset = liHeight * index + liHeight / 2 - containerHeight / 2;
     if (offset < 0) {
