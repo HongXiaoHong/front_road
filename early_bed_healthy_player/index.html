@@ -31,9 +31,8 @@
                 </div>
                 <i class="fa-solid fa-backward-step"></i>
                 <!-- 播放切换 -->
-                <!-- todo 播放/暂停 -->
                 <i id="play" class="fa-solid fa-play"></i>
-                <i id="pause" class="fa-solid fa-pause"></i>
+                <i id="pause" class="fa-solid fa-pause hide"></i>
                 <i class="fa-solid fa-forward-step"></i>
                 <!-- 播放顺序 -->
                 <i class="fa-solid fa-arrow-down-short-wide"></i>
@@ -51,7 +50,7 @@
                     <span id="palyed_time">00:00</span>
                     <!-- 播放进度条 -->
                     <div class="slider-container">
-                        <input type="range" min="1" max="100" value="0" class="slider" id="myRange">
+                        <input type="range" min="1" max="100" value="0" class="slider" id="play_range">
                     </div>
                 </div>
             </div>
@@ -61,7 +60,7 @@
                 <i class="fa-solid fa-volume-off"></i>
                 <!-- <i class="fa-solid fa-volume-xmark"></i> -->
                 <div class="slider-container">
-                    <input type="range" min="1" max="100" value="0" class="slider" id="myRange">
+                    <input type="range" min="1" max="100" value="0" class="slider" id="voice_range">
                 </div>
             </div>
             <div id="list_switch">

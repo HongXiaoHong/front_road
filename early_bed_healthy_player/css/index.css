@@ -38,10 +38,6 @@ body {
     bottom: var( --controller-height);
 }
 
-audio {
-    width: 450px;
-    margin: 30px 0;
-}
 
 .container {
     height: 72vh;
@@ -68,11 +64,6 @@ audio {
     transform: scale(1.2);
 }
 
-audio {
-    width: 100%;
-    margin-bottom: 0;
-}
-
 #controller {
     display: flex;
     column-gap: 5px;
@@ -96,6 +87,10 @@ audio {
 #ball-grandpa {
     border-radius: 50%;
     border: 5px solid black;
+}
+
+i.hide  {
+    display: none;
 }
 
 #song_info {

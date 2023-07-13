@@ -102,7 +102,9 @@ function formatTime(timeInSeconds) {
  * 设置 ul 元素的偏移量
  */
 function setOffset() {
-    $("#palyed_time").text(formatTime(getCurTime()));
+    const curTime = getCurTime();
+    $("#palyed_time").text(formatTime(curTime));
+    $("#play_range").attr("value", 100 * (curTime/doms.audio.duration));
     var index = findIndex();
     var offset = liHeight * index + liHeight / 2 - containerHeight / 2;
     if (offset < 0) {
@@ -127,7 +129,7 @@ function setOffset() {
 doms.audio.addEventListener('timeupdate', setOffset);
 
 // 进度条
-let slider = document.getElementById("myRange");
+let slider = document.getElementById("play_range");
 
 slider.oninput = function() {
   console.log(this.value);
