@@ -37,6 +37,7 @@ var doms = {
     audio: document.querySelector('audio'),
     ul: document.querySelector('.container ul'),
     container: document.querySelector('.container'),
+    voiceRange: document.getElementById('voice_range'),
 };
 
 function getCurTime() {
@@ -98,13 +99,14 @@ function formatTime(timeInSeconds) {
 
     return minutes + ':' + seconds;
 }
+
 /**
  * 设置 ul 元素的偏移量
  */
 function setOffset() {
     const curTime = getCurTime();
     $("#palyed_time").text(formatTime(curTime));
-    $("#play_range").attr("value", 100 * (curTime/doms.audio.duration));
+    $("#play_range").attr("value", 100 * (curTime / doms.audio.duration));
     var index = findIndex();
     var offset = liHeight * index + liHeight / 2 - containerHeight / 2;
     if (offset < 0) {
@@ -131,41 +133,45 @@ doms.audio.addEventListener('timeupdate', setOffset);
 // 进度条
 let slider = document.getElementById("play_range");
 
-slider.oninput = function() {
-  console.log(this.value);
+slider.oninput = function () {
+    console.log(this.value);
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
     // 获取 audio 元素
     var audioElement = document.getElementById('musician');
-  
-    $('#play').click(function() {
+
+    $('#play').click(function () {
         audioElement.play();
         $(this).hide();    // 隐藏播放按钮
         $('#pause').show(); // 显示暂停按钮
-      });
-    
-      $('#pause').click(function() {
+    });
+
+    $('#pause').click(function () {
         audioElement.pause();
         $(this).hide();   // 隐藏暂停按钮
         $('#play').show(); // 显示播放按钮
-      });
+    });
 
-    $('#voice_open').click(function() {
+    $('#voice_open').click(function () {
         audioElement.muted = true;
         $(this).hide();    // 隐藏播放按钮
         $('#voice_off').show(); // 显示暂停按钮
-      });
+    });
 
-      $('#voice_off').click(function() {
-          audioElement.muted = false;
+    $('#voice_off').click(function () {
+        audioElement.muted = false;
         $(this).hide();   // 隐藏暂停按钮
         $('#voice_open').show(); // 显示播放按钮
-      });
-  
-      // audioElement.currentTime = 0;  // 把播放位置重置到开头
-  });
-  
+    });
+
+    $(doms.voiceRange).on("input", () => {
+        // 把滑动条的值转换为0-1之间的值
+        audioElement.volume = doms.voiceRange.value / 100;
+    })
+    // audioElement.currentTime = 0;  // 把播放位置重置到开头
+});
+
 
 // 地上的萤火虫 荧光点点
 particlesJS("particles-js", {
@@ -209,18 +215,5 @@ particlesJS("particles-js", {
     },
     "retina_detect": true
 });
-var stats, update;
-stats = new Stats;
-stats.setMode(0);
-stats.domElement.style.position = 'absolute';
-stats.domElement.style.left = '0px';
-stats.domElement.style.top = '0px';
-document.body.appendChild(stats.domElement);
-update = function () {
-    stats.begin();
-    stats.end();
-    requestAnimationFrame(update);
-};
-requestAnimationFrame(update);
 
 

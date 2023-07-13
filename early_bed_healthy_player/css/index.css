@@ -6,6 +6,7 @@
 :root {
     --controller-height: 10vh;
     --slider-height: 2vh;
+    --button-column-gap: 2vw;
 }
 
 body {
@@ -89,6 +90,10 @@ body {
     border: 5px solid black;
 }
 
+i {
+    font-size: 1.2rem;
+}
+
 i.hide  {
     display: none;
 }
@@ -99,7 +104,7 @@ i.hide  {
 
 #player, #play-duration, #voice {
     display: flex;
-    column-gap: 5px;
+    column-gap: var(--button-column-gap);
     align-items: center;
 }
 
@@ -122,8 +127,12 @@ i.hide  {
     transition: opacity .2s;
   }
   
-  .controller i:hover, .slider:hover {
+  .slider:hover {
     opacity: 1;
+  }
+  
+  #controller i:hover {
+    opacity: 0.5;
   }
   
   .slider::-webkit-slider-thumb {
