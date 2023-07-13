@@ -152,4 +152,9 @@ i.hide  {
     cursor: pointer;
   }
   
-  
+  #play_range {
+    width: 30vw;
+  }
+  #voice_range {
+    width: 10vw;
+  }
