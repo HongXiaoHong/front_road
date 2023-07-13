@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>早睡身体好播放器</title>
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="sky">
+        <div id="particles-js"></div>
+        <div class="container">
+            <ul class="lrc-list"></ul>
+        </div>
+        <audio id="musician" src="./assets/早睡身体好-许嵩.mp3"></audio>
+        <div id="controller">
+            <div id="player">
+                <!-- 这里有一个旋转的球, 内容是歌词的第一个字 -->
+                <div id="ball-grandpa">
+                    <div id="ball-dad">
+                        <div id="ball"></div>
+                    </div>
+                </div>
+                <i class="fa-solid fa-backward-step"></i>
+                <!-- 播放切换 -->
+                <!-- todo 播放/暂停 -->
+                <i id="play" class="fa-solid fa-play"></i>
+                <i id="pause" class="fa-solid fa-pause"></i>
+                <i class="fa-solid fa-forward-step"></i>
+                <!-- 播放顺序 -->
+                <i class="fa-solid fa-arrow-down-short-wide"></i>
+                <!-- todo 点击此按钮更换图标的同时, 更换页面音乐列表的播放顺序 -->
+           <!--      <i class="fa-solid fa-rotate"></i>
+                <i class="fa-solid fa-shuffle"></i> -->
+            </div>
+            <div id="song">
+                <div id="song_info">
+                    <span>早睡身体好</span>
+                    <span>许嵩</span>
+                </div>
+                <div id="play-duration">
+                    <!-- 播放时间  -->
+                    <span>00:00</span>
+                    <!-- 播放进度条 -->
+                    <div class="slider-container">
+                        <input type="range" min="1" max="100" value="0" class="slider" id="myRange">
+                    </div>
+                </div>
+            </div>
+            <div id="voice">
+                <!-- 声音控制 -->
+                <!-- todo 有声无声 -->
+                <i class="fa-solid fa-volume-off"></i>
+                <!-- <i class="fa-solid fa-volume-xmark"></i> -->
+                <div class="slider-container">
+                    <input type="range" min="1" max="100" value="0" class="slider" id="myRange">
+                </div>
+            </div>
+            <div id="list_switch">
+                <!-- 选择歌词列表 -->
+                <i class="fa-solid fa-bars-staggered"></i>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/data.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
