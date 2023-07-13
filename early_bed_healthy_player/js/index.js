@@ -150,6 +150,18 @@ $(document).ready(function(){
         $(this).hide();   // 隐藏暂停按钮
         $('#play').show(); // 显示播放按钮
       });
+
+    $('#voice_open').click(function() {
+        audioElement.muted = true;
+        $(this).hide();    // 隐藏播放按钮
+        $('#voice_off').show(); // 显示暂停按钮
+      });
+
+      $('#voice_off').click(function() {
+          audioElement.muted = false;
+        $(this).hide();   // 隐藏暂停按钮
+        $('#voice_open').show(); // 显示播放按钮
+      });
   
       // audioElement.currentTime = 0;  // 把播放位置重置到开头
   });
