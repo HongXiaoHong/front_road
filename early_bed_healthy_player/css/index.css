@@ -251,7 +251,20 @@ ul#playlist li {
     column-gap: 2vw;
 }
 
-ul#playlist li span.playlist_index:hover {
+ul#playlist li div.playlist_prefix:hover {
     opacity: 0.5;
     cursor: pointer;
+}
+
+ul#playlist li div.playlist_prefix:hover i.playlist_play_icon {
+    display: inline-block;
+    transform: scale(1.2);
+}
+
+ul#playlist li div.playlist_prefix:hover span.playlist_index {
+    display: none;
+}
+
+ul#playlist li i.playlist_play_icon {
+    display: none;
 }

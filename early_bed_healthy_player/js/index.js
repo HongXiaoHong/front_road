@@ -170,6 +170,10 @@ $(document).ready(function () {
         audioElement.volume = doms.voiceRange.value / 100;
     })
     // audioElement.currentTime = 0;  // 把播放位置重置到开头
+
+    $('.playlist_play_icon').click(function () {
+        console.log(this);
+    });
 });
 
 
