@@ -176,7 +176,11 @@ $(document).ready(function () {
     });
 
     $('#playlist_down').click(function () {
-        $("#playlist_panel").hide();
+        $("#playlist_panel").removeClass("playlist_show");
+    });
+
+    $('#playlist_switch').click(function () {
+        $("#playlist_panel").toggleClass("playlist_show");
     });
 });
 

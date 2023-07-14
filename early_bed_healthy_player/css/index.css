@@ -6,7 +6,9 @@
 
 :root {
     --controller-height: 10vh;
+    --playlist-hidden-height: -40vh;
     --slider-height: 2vh;
+    --playlist_panel-height: 50vh;
     --button-column-gap: 2vw;
     --slide-button-color: #363433;
     --body_background-color: rgb(15, 30, 63);
@@ -77,6 +79,7 @@ body {
 }
 
 #controller {
+    z-index: 300;
     display: flex;
     column-gap: 5px;
     justify-content: space-around;
@@ -206,12 +209,18 @@ i.hide {
     z-index: 200;
 
     position: absolute;
-    bottom: var(--controller-height);
+     bottom: var(--playlist-hidden-height);
 
     width: 100%;
-    height: 50vh;
+    height: var(--playlist_panel-height);
     padding: 1vw;
     background: linear-gradient(0deg, rgb(100, 110, 130), var(--playlist_panel_background-color));
+
+    transition: all 0.5s ease-in-out;
+}
+
+#playlist_panel.playlist_show {
+    bottom: var(--controller-height);
 }
 
 #playlist_header {
