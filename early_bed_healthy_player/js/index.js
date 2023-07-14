@@ -130,16 +130,14 @@ function setOffset() {
 
 doms.audio.addEventListener('timeupdate', setOffset);
 
-// 进度条
-let slider = document.getElementById("play_range");
-
-slider.oninput = function () {
-    console.log(this.value);
-}
-
 $(document).ready(function () {
     // 获取 audio 元素
     var audioElement = document.getElementById('musician');
+
+    // 进度条
+    $("#play_range").on("input", (e)=>{
+        console.log(e.target.value);
+    });
 
     $('#play').click(function () {
         audioElement.play();
