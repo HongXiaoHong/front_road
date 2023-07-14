@@ -17,6 +17,15 @@ body {
     overflow: hidden;
 }
 
+#mountains_in_night {
+    background: no-repeat url('../assets/mountains_in_night.png');
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+    position: absolute;
+    bottom: var(--controller-height);
+}
+
 #sky {
     background: radial-gradient(
             closest-corner circle at 5% 5%,
@@ -76,12 +85,34 @@ body {
     max-height: 88px;
 }
 
+@keyframes star_rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    
+}
+
+#moon {
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: gold;
+    border-radius: 50%;
+    position: absolute;
+    /* left: 3px; */
+    top: -15px;
+    
+}
+
 #ball {
     width: 20px;
     height: 20px;
     border-radius: 50%;
     border: 5px solid black;
     background-color: gold;
+    box-shadow: 0 0 0 0.1em #F4AAB9
 }
 #ball-dad {
     border-radius: 50%;
@@ -90,6 +121,9 @@ body {
 #ball-grandpa {
     border-radius: 50%;
     border: 5px solid black;
+    box-shadow: 0 0 0 0.1em #F4AAB9;
+    position: relative;
+    animation: star_rotate 2s infinite;
 }
 
 i {
