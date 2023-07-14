@@ -174,6 +174,10 @@ $(document).ready(function () {
     $('.playlist_play_icon').click(function () {
         console.log(this);
     });
+
+    $('#playlist_down').click(function () {
+        $("#playlist_panel").hide();
+    });
 });
 
 

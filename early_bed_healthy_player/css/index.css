@@ -251,6 +251,7 @@ ul#playlist li {
     column-gap: 2vw;
 }
 
+/* -音乐列表悬浮更换数字为图标 */
 ul#playlist li div.playlist_prefix:hover {
     opacity: 0.5;
     cursor: pointer;
@@ -268,3 +269,4 @@ ul#playlist li div.playlist_prefix:hover span.playlist_index {
 ul#playlist li i.playlist_play_icon {
     display: none;
 }
+/* 音乐列表悬浮更换数字为图标- */
