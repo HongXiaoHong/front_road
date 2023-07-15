@@ -65,7 +65,8 @@ const ex = [
 
 let datas = {
     "lrc": lrc,
-    "playlist": playlist,
+    "currentPlaylist": [],
+    "playlists": []
 }
 
 
@@ -74,7 +75,7 @@ const refresh_playlist = () => {
         .then(response => response.json())  // 解析返回的JSON数据
         .then(data => {
             // 请求成功时的处理逻辑
-            console.log("data", data)
+            datas.playlists = data;
             // 根据返回的数据更新页面
             init_playlists(data)
         })
@@ -84,21 +85,21 @@ const refresh_playlist = () => {
         });
 }
 
-function replacePlaylist(data) {
-    $(doms.playlist_ul).html(generatePlayListHTML(data))
+function replacePlaylist(selectedPlaylist) {
+    $(doms.playlist_ul).html(generatePlayListHTML(selectedPlaylist))
 }
 
-const init_playlists = (data) => {
-    $(doms.playlist_choose_select).html(generatePlayListChooseHTML(data))
-    replacePlaylist(data);
+const init_playlists = () => {
+    $(doms.playlist_choose_select).html(generatePlayListChooseHTML())
+    replacePlaylist();
 }
 
 /**
  * 创建歌词元素 li
  */
-function generatePlayListChooseHTML(data) {
+function generatePlayListChooseHTML() {
     let html = "";
-    for (const playlist in data) {
+    for (const playlist in datas.playlists) {
         html += `
         <option ${playlist === "favorite" ? "selected" : ""} value="${playlist}">${playlist}</option>
         `;
@@ -109,12 +110,14 @@ function generatePlayListChooseHTML(data) {
 /**
  * 创建歌词元素 li
  */
-function generatePlayListHTML(data, selectedPlaylist = "favorite") {
+function generatePlayListHTML(selectedPlaylist = "favorite") {
+
+    datas.currentPlaylist = datas.playlists[selectedPlaylist]
     // 初始化一个空的HTML字符串
     let html = '';
 
     // 对于每一个键，遍历其对应的歌曲列表
-    data[selectedPlaylist].forEach((song, index) => {
+    datas.currentPlaylist.forEach((song, index) => {
         // 添加到HTML字符串中，使用模板字符串来插入歌曲名和索引值（加1是因为索引是从0开始的）
         html += `
                 <li>

@@ -171,9 +171,15 @@ $(document).ready(function () {
     })
     // audioElement.currentTime = 0;  // 把播放位置重置到开头
 
-    $('.playlist_play_icon').click(function () {
-        console.log(this);
+    // 监听#playlist下的所有.playlist_play_icon的click事件
+    $("#playlist").on("click", ".playlist_play_icon", function() {
+        // 这里的this指向被点击的.playlist_play_icon元素
+        let songName = $(this).parent().next(".playlist_song_name").text();
+
+        // 你可以在这里添加你的代码来处理点击事件，比如播放相应的音乐
+        console.log("你点击的歌曲是：" + songName);
     });
+
 
     $('#playlist_down').click(function () {
         $("#playlist_panel").removeClass("playlist_show");
@@ -182,5 +188,12 @@ $(document).ready(function () {
     $('#playlist_switch').click(function () {
         $("#playlist_panel").toggleClass("playlist_show");
     });
+
+    $('#playlist_choose').change(function (e) {
+        replacePlaylist(e.target.value);
+    });
+
+
+
     refresh_playlist();
 });
