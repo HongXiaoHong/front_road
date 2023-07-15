@@ -135,23 +135,32 @@ doms.audio.addEventListener('timeupdate', setOffset);
 $(document).ready(function () {
     // 获取 audio 元素
     var audioElement = document.getElementById('musician');
+    const $playRange = $("#play_range"); // 进度条
+    const $play = $('#play'); // 播放按钮
+    const $pause = $('#pause');
 
-    // 进度条
-    $("#play_range").on("input", (e) => {
+
+    $playRange.on("input", (e) => {
         console.log(e.target.value);
     });
 
-    $('#play').click(function () {
+    const playSong = () => {
         audioElement.play();
-        $(this).hide();    // 隐藏播放按钮
-        $('#pause').show(); // 显示暂停按钮
-    });
+        $play.hide();    // 隐藏播放按钮
+        $pause.show(); // 显示暂停按钮
+    }
 
-    $('#pause').click(function () {
+    // 音乐表盘控制器播放按钮
+    $play.click(playSong);
+
+    const pauseSong = () => {
         audioElement.pause();
-        $(this).hide();   // 隐藏暂停按钮
-        $('#play').show(); // 显示播放按钮
-    });
+        $pause.hide();   // 隐藏暂停按钮
+        $play.show(); // 显示播放按钮
+    }
+
+    // 暂停按钮
+    $pause.click(pauseSong);
 
     $('#voice_open').click(function () {
         audioElement.muted = true;
@@ -169,16 +178,23 @@ $(document).ready(function () {
         // 把滑动条的值转换为0-1之间的值
         audioElement.volume = doms.voiceRange.value / 100;
     })
-    // audioElement.currentTime = 0;  // 把播放位置重置到开头
 
-    // 监听#playlist下的所有.playlist_play_icon的click事件
+    function changeSong(songName) {
+        audioElement.src = `http://localhost:8891/audio/${songName}?suffix=${datas.currentPlaylist[songName]}`;
+        $playRange.attr("value", 0);
+        const song_info = songName.split("-");
+        $("#song_info span:first-child").text(song_info[0])
+        $("#song_info span:last-child").text(song_info[1])
+        playSong();
+    }
+
+// 监听#playlist下的所有.playlist_play_icon的click事件
     $("#playlist").on("click", ".playlist_play_icon", function () {
         // 这里的this指向被点击的.playlist_play_icon元素
         let songName = $(this).parent().next(".playlist_song_name").text();
 
         // 你可以在这里添加你的代码来处理点击事件，比如播放相应的音乐
-        audioElement.src = `http://localhost:8891/audio/${songName}?suffix=${datas.currentPlaylist[songName]}` ;
-        audioElement.play();
+        changeSong(songName);
     });
 
 
