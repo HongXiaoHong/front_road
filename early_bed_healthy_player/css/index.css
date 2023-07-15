@@ -247,6 +247,7 @@ ul#playlist {
     height: 38vh;
     overflow-y: scroll;
     margin: 3vh;
+    padding: 2vh;
     display: flex;
     flex-direction: column;
     row-gap: 1.2vh;
