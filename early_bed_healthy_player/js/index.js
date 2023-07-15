@@ -140,9 +140,42 @@ $(document).ready(function () {
     const $play = $('#play'); // 播放按钮
     const $pause = $('#pause');
 
+    $("i.positive").show();
+    $("i.playOrder").click((e) => {
+        const [playOrder, index] = datas.currentPlayOrder;
+        const nextIndex = (index + 1) % datas.playOrders.length;
+        const nextPlayOrder = datas.playOrders[nextIndex];
+        datas.currentPlayOrder = [nextPlayOrder, nextIndex];
+        // 循环播放与否
+        audioElement.loop = nextPlayOrder === "infinity";
+        $("i." + nextPlayOrder).show();
+        $(e.target).hide();
+    });
+
+    $(audioElement).on("ended", () => {
+        nextSong();
+    })
+
+    function nextSong() {
+        const [playOrder, index] = datas.currentPlayOrder;
+        if (playOrder === "infinity") {
+            return
+        }
+        const keys = Object.keys(datas.currentPlaylist);
+        if (playOrder === "positive") {
+            datas.currentPlaylistIndex++;
+        } else if (playOrder === "random") {
+            datas.currentPlaylistIndex = Math.floor(Math.random() * keys.length);
+        }
+        changeSongAndLrc(keys[datas.currentPlaylistIndex]);
+    }
+
+    $("#nextSong").click(() => {
+        nextSong();
+    })
 
     $playRange.on("input", (e) => {
-        console.log(e.target.value);
+        audioElement.currentTime = audioElement.duration * e.target.value / 100;
     });
 
     const playSong = () => {
@@ -202,15 +235,19 @@ $(document).ready(function () {
 
     }
 
+    function changeSongAndLrc(songName) {
+        // 更换播放的音乐
+        changeSong(songName);
+        // 更换歌词
+        get_song_lrc(songName, changeLrc);
+    }
+
 // 监听#playlist下的所有.playlist_play_icon的click事件
     $("#playlist").on("click", ".playlist_play_icon", function () {
         // 这里的this指向被点击的.playlist_play_icon元素
         let songName = $(this).parent().next(".playlist_song_name").text();
 
-        // 更换播放的音乐
-        changeSong(songName);
-        // 更换歌词
-        get_song_lrc(songName, changeLrc);
+        changeSongAndLrc(songName);
     });
 
 

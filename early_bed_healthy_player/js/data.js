@@ -42,27 +42,6 @@ var lrc = `[00:01.06]早睡身体好
 [03:43.450]早睡身体好 有什么值得烦恼
 [03:49.790]早睡身体好 明天还要起早`;
 
-const playlist = [
-    "早睡身体好-许嵩",
-    "城府-许嵩",
-    "有何不可-许嵩",
-    "留香-许嵩",
-    "没想到-许嵩",
-    "清明雨上-许嵩",
-    "江湖-许嵩",
-    "幻听-许嵩",
-];
-
-const like = [
-    "江湖-许嵩",
-    "幻听-许嵩",
-];
-
-const ex = [
-    "早睡身体好-许嵩",
-    "城府-许嵩",
-];
-
 let datas = {
     "lrc": lrc,
     "containerHeight": 0,
@@ -70,7 +49,14 @@ let datas = {
     "maxOffset": 0,
     "lrcData": [],
     "currentPlaylist": {},
-    "playlists": {}
+    "currentPlaylistIndex": 0,
+    "playlists": {},
+    "currentPlayOrder": ["positive", 0],
+    "playOrders": [
+        "positive",
+        "random",
+        "infinity",
+    ]
 }
 
 
