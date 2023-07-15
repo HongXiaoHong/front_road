@@ -170,8 +170,25 @@ $(document).ready(function () {
         changeSongAndLrc(keys[datas.currentPlaylistIndex]);
     }
 
+    function backwardSong() {
+        const [playOrder, index] = datas.currentPlayOrder;
+        if (playOrder === "infinity") {
+            return
+        }
+        const keys = Object.keys(datas.currentPlaylist);
+        if (playOrder === "positive") {
+            datas.currentPlaylistIndex--;
+        } else if (playOrder === "random") {
+            datas.currentPlaylistIndex = Math.floor(Math.random() * keys.length);
+        }
+        changeSongAndLrc(keys[datas.currentPlaylistIndex]);
+    }
+
     $("#nextSong").click(() => {
         nextSong();
+    })
+    $("#backward").click(() => {
+        backwardSong();
     })
 
     $playRange.on("input", (e) => {
