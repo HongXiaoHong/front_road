@@ -65,8 +65,8 @@ const ex = [
 
 let datas = {
     "lrc": lrc,
-    "currentPlaylist": [],
-    "playlists": []
+    "currentPlaylist": {},
+    "playlists": {}
 }
 
 
@@ -116,8 +116,8 @@ function generatePlayListHTML(selectedPlaylist = "favorite") {
     // 初始化一个空的HTML字符串
     let html = '';
 
-    // 对于每一个键，遍历其对应的歌曲列表
-    datas.currentPlaylist.forEach((song, index) => {
+    const songNames = Object.keys(datas.currentPlaylist);
+    songNames.forEach((song, index) => {
         // 添加到HTML字符串中，使用模板字符串来插入歌曲名和索引值（加1是因为索引是从0开始的）
         html += `
                 <li>

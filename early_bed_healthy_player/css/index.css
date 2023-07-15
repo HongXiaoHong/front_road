@@ -244,6 +244,8 @@ i.hide {
 }
 
 ul#playlist {
+    height: 38vh;
+    overflow-y: scroll;
     margin: 3vh;
     display: flex;
     flex-direction: column;

@@ -137,7 +137,7 @@ $(document).ready(function () {
     var audioElement = document.getElementById('musician');
 
     // 进度条
-    $("#play_range").on("input", (e)=>{
+    $("#play_range").on("input", (e) => {
         console.log(e.target.value);
     });
 
@@ -172,12 +172,13 @@ $(document).ready(function () {
     // audioElement.currentTime = 0;  // 把播放位置重置到开头
 
     // 监听#playlist下的所有.playlist_play_icon的click事件
-    $("#playlist").on("click", ".playlist_play_icon", function() {
+    $("#playlist").on("click", ".playlist_play_icon", function () {
         // 这里的this指向被点击的.playlist_play_icon元素
         let songName = $(this).parent().next(".playlist_song_name").text();
 
         // 你可以在这里添加你的代码来处理点击事件，比如播放相应的音乐
-        console.log("你点击的歌曲是：" + songName);
+        audioElement.src = `http://localhost:8891/audio/${songName}?suffix=${datas.currentPlaylist[songName]}` ;
+        audioElement.play();
     });
 
 
@@ -192,7 +193,6 @@ $(document).ready(function () {
     $('#playlist_choose').change(function (e) {
         replacePlaylist(e.target.value);
     });
-
 
 
     refresh_playlist();
