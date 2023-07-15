@@ -41,3 +41,92 @@ var lrc = `[00:01.06]早睡身体好
 [03:36.940]早睡身体好 伤心容易感冒
 [03:43.450]早睡身体好 有什么值得烦恼
 [03:49.790]早睡身体好 明天还要起早`;
+
+const playlist = [
+    "早睡身体好-许嵩",
+    "城府-许嵩",
+    "有何不可-许嵩",
+    "留香-许嵩",
+    "没想到-许嵩",
+    "清明雨上-许嵩",
+    "江湖-许嵩",
+    "幻听-许嵩",
+];
+
+const like = [
+    "江湖-许嵩",
+    "幻听-许嵩",
+];
+
+const ex = [
+    "早睡身体好-许嵩",
+    "城府-许嵩",
+];
+
+let datas = {
+    "lrc": lrc,
+    "playlist": playlist,
+}
+
+
+const refresh_playlist = () => {
+    fetch('http://localhost:8891/playlist')
+        .then(response => response.json())  // 解析返回的JSON数据
+        .then(data => {
+            // 请求成功时的处理逻辑
+            console.log("data", data)
+            // 根据返回的数据更新页面
+            init_playlists(data)
+        })
+        .catch(error => {
+            // 请求失败时的处理逻辑
+            console.log('Error:', error);
+        });
+}
+
+function replacePlaylist(data) {
+    $(doms.playlist_ul).html(generatePlayListHTML(data))
+}
+
+const init_playlists = (data) => {
+    $(doms.playlist_choose_select).html(generatePlayListChooseHTML(data))
+    replacePlaylist(data);
+}
+
+/**
+ * 创建歌词元素 li
+ */
+function generatePlayListChooseHTML(data) {
+    let html = "";
+    for (const playlist in data) {
+        html += `
+        <option ${playlist === "favorite" ? "selected" : ""} value="${playlist}">${playlist}</option>
+        `;
+    }
+    return html;
+}
+
+/**
+ * 创建歌词元素 li
+ */
+function generatePlayListHTML(data, selectedPlaylist = "favorite") {
+    // 初始化一个空的HTML字符串
+    let html = '';
+
+    // 对于每一个键，遍历其对应的歌曲列表
+    data[selectedPlaylist].forEach((song, index) => {
+        // 添加到HTML字符串中，使用模板字符串来插入歌曲名和索引值（加1是因为索引是从0开始的）
+        html += `
+                <li>
+                    <div class="playlist_prefix">
+                        <span class="playlist_index">${index + 1}</span>
+                        <i class="fa-solid fa-circle-play playlist_play_icon"></i>
+                    </div>
+                    <span class="playlist_song_name">${song}</span>
+                </li>
+            `;
+    });
+
+    // 返回生成的HTML字符串
+    return html;
+}

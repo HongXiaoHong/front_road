@@ -5,7 +5,7 @@
  * {time:开始时间, words: 歌词内容}
  */
 function parseLrc() {
-    var lines = lrc.split('\n');
+    var lines = datas.lrc.split('\n');
     var result = []; // 歌词对象数组
     for (var i = 0; i < lines.length; i++) {
         var str = lines[i];
@@ -38,6 +38,8 @@ var doms = {
     ul: document.querySelector('.container ul'),
     container: document.querySelector('.container'),
     voiceRange: document.getElementById('voice_range'),
+    playlist_ul: document.getElementById('playlist'),
+    playlist_choose_select: document.getElementById('playlist_choose'),
 };
 
 function getCurTime() {
@@ -180,6 +182,7 @@ $(document).ready(function () {
     $('#playlist_switch').click(function () {
         $("#playlist_panel").toggleClass("playlist_show");
     });
+    refresh_playlist();
 });
 
 
