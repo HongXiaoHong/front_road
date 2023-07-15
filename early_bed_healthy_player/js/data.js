@@ -65,6 +65,10 @@ const ex = [
 
 let datas = {
     "lrc": lrc,
+    "containerHeight": 0,
+    "liHeight": 0,
+    "maxOffset": 0,
+    "lrcData": [],
     "currentPlaylist": {},
     "playlists": {}
 }
@@ -132,4 +136,20 @@ function generatePlayListHTML(selectedPlaylist = "favorite") {
 
     // 返回生成的HTML字符串
     return html;
+}
+
+
+const get_song_lrc = (song_info, callback) => {
+    fetch(`http://localhost:8891/lyrics/${song_info}`)
+        .then(response => response.json())  // 解析返回的JSON数据
+        .then(data => {
+            // 请求成功时的处理逻辑
+            datas.lrc = data.lrc;
+            // 根据返回的数据更新页面
+            callback(data)
+        })
+        .catch(error => {
+            // 请求失败时的处理逻辑
+            console.log('Error:', error);
+        });
 }

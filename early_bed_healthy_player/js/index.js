@@ -5,9 +5,10 @@
  * {time:开始时间, words: 歌词内容}
  */
 function parseLrc() {
-    var lines = datas.lrc.split('\n');
+    const lines = datas.lrc.split('\n');
     var result = []; // 歌词对象数组
-    for (var i = 0; i < lines.length; i++) {
+    const withTimeLines = lines.filter((item) => /\[\d{2}:\d{2}.\d+].*/.test(item));
+    for (var i = 0; i < withTimeLines.length; i++) {
         var str = lines[i];
         var parts = str.split(']');
         var timeStr = parts[0].substring(1);
@@ -30,7 +31,7 @@ function parseTime(timeStr) {
     return +parts[0] * 60 + +parts[1];
 }
 
-var lrcData = parseLrc();
+datas.lrcData = parseLrc();
 
 // 获取需要的 dom
 var doms = {
@@ -48,19 +49,19 @@ function getCurTime() {
 
 /**
  * 计算出，在当前播放器播放到第几秒的情况下
- * lrcData数组中，应该高亮显示的歌词下标
+ * datas.lrcData数组中，应该高亮显示的歌词下标
  * 如果没有任何一句歌词需要显示，则得到-1
  */
 function findIndex() {
     // 播放器当前时间
     var curTime = getCurTime();
-    for (var i = 0; i < lrcData.length; i++) {
-        if (curTime < lrcData[i].time) {
+    for (var i = 0; i < datas.lrcData.length; i++) {
+        if (curTime < datas.lrcData[i].time) {
             return i - 1;
         }
     }
     // 找遍了都没找到（说明播放到最后一句）
-    return lrcData.length - 1;
+    return datas.lrcData.length - 1;
 }
 
 // 界面
@@ -69,23 +70,23 @@ function findIndex() {
  * 创建歌词元素 li
  */
 function createLrcElements() {
-    var frag = document.createDocumentFragment(); // 文档片段
-    for (var i = 0; i < lrcData.length; i++) {
-        var li = document.createElement('li');
-        li.textContent = lrcData[i].words;
-        frag.appendChild(li); // 改动了 dom 树
-    }
-    doms.ul.appendChild(frag);
+    let html = "";
+    datas.lrcData.forEach(({words}) => {
+        html += `
+        <li>${words}</li>
+        `;
+    })
+    $(doms.ul).html(html)
 }
 
 createLrcElements();
 
 // 容器高度
-var containerHeight = doms.container.clientHeight;
+datas.containerHeight = doms.container.clientHeight;
 // 每个 li 的高度
-var liHeight = doms.ul.children[0].clientHeight;
+datas.liHeight = doms.ul.children[0].clientHeight;
 // 最大偏移量
-var maxOffset = doms.ul.clientHeight - containerHeight;
+datas.maxOffset = doms.ul.clientHeight - datas.containerHeight;
 
 function formatTime(timeInSeconds) {
     // 去掉小数点，只保留整数
@@ -110,12 +111,12 @@ function setOffset() {
     $("#palyed_time").text(formatTime(curTime));
     $("#play_range").attr("value", 100 * (curTime / doms.audio.duration));
     var index = findIndex();
-    var offset = liHeight * index + liHeight / 2 - containerHeight / 2;
+    var offset = datas.liHeight * index + datas.liHeight / 2 - datas.containerHeight / 2;
     if (offset < 0) {
         offset = 0;
     }
-    if (offset > maxOffset) {
-        offset = maxOffset;
+    if (offset > datas.maxOffset) {
+        offset = datas.maxOffset;
     }
     doms.ul.style.transform = `translateY(-${offset}px)`;
     // 去掉之前的 active 样式
@@ -188,13 +189,28 @@ $(document).ready(function () {
         playSong();
     }
 
+    function changeLrc(lrc) {
+        console.log(lrc)
+        datas.lrcData = parseLrc();
+        createLrcElements();
+        // 容器高度
+        datas.containerHeight = doms.container.clientHeight;
+        // 每个 li 的高度
+        datas.liHeight = doms.ul.children[0].clientHeight;
+        // 最大偏移量
+        datas.maxOffset = doms.ul.clientHeight - datas.containerHeight;
+
+    }
+
 // 监听#playlist下的所有.playlist_play_icon的click事件
     $("#playlist").on("click", ".playlist_play_icon", function () {
         // 这里的this指向被点击的.playlist_play_icon元素
         let songName = $(this).parent().next(".playlist_song_name").text();
 
-        // 你可以在这里添加你的代码来处理点击事件，比如播放相应的音乐
+        // 更换播放的音乐
         changeSong(songName);
+        // 更换歌词
+        get_song_lrc(songName, changeLrc);
     });
 
 
