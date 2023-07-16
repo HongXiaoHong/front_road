@@ -231,7 +231,7 @@ $(document).ready(function () {
     })
 
     function changeSong(songName) {
-        audioElement.src = `http://localhost:8891/audio/${songName}?suffix=${datas.currentPlaylist[songName]}`;
+        audioElement.src = `http://localhost:8891/audio/${songName}?suffix=${datas.currentPlaylist[songName]}&currentPlaylistChoose=${datas.currentPlaylistChoose}`;
         $playRange.attr("value", 0);
         const song_info = songName.split("-");
         $("#song_info span:first-child").text(song_info[0])
@@ -277,6 +277,7 @@ $(document).ready(function () {
     });
 
     $('#playlist_choose').change(function (e) {
+        datas.currentPlaylistChoose = e.target.value;
         replacePlaylist(e.target.value);
     });
 

@@ -49,6 +49,7 @@ let datas = {
     "maxOffset": 0,
     "lrcData": [],
     "currentPlaylist": {},
+    "currentPlaylistChoose": "favorite",
     "currentPlaylistIndex": 0,
     "playlists": {},
     "currentPlayOrder": ["positive", 0],
