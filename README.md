@@ -21,121 +21,242 @@
 月光从月亮出来, 渐变洒向地面
 地面点点萤火虫
 
-初版位置稍有偏差
+音乐控制面板以及歌单列表 参照 https://www.joox.com/intl
 
-![music_magnetic_field_analyzer](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/music_magnetic_field_analyzer.gif)
+![早睡身体好-播放器](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_EZgSA5djnQ.gif)
 
-位置居中  
+## early_bed_healthy_player 接口
 
-![music_magnetic_field_analyzer_v1](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/music_magnetic_field_analyzer_v1.gif)
-
-不同设备兼容
-
-![](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/music_magnetic_field_analyzer_media.gif)
-
-#### music_magnetic_field_analyzer 接口
-
-下载音乐磁场的音乐
-
-通过爬虫爬取页面的数据进行下载
-
-url: 音乐磁场链接
-
-directory: 选择不同目录进行存放
-
+### 歌单列表
 ```http
-POST http://localhost:8888/music/magnetic/field/download  
-Content-Type: application/json  
-
-{  
-    "url": "https://www.hifini.com/thread-4284.htm",    "directory": "favorite"}  
+GET http://localhost:8891/playlist
 ```
 
-成功响应  
+成功响应
 
 ```json5
-{  
-    "artist_name": "周柏豪",  
-    "music_url": "get_music.php?key=sHFKPlODpcWKT+8xzWMHKJ2nR8NkDo1z/xmSSf/+vgcnBATGy2vBJ9DX7E71soNa2+Dg7OwNQA",    "result": "success",    "song_name": "我的宣言"  
-}  
+{
+  "exercise": {
+    "BOOM-Tiësto": "mp3",
+    "Because Of You-Ne-Yo": "m4a",
+    "Empty Love-Lulleaux": "mp3",
+    "Everytime We Touch-xxxCr3": "m4a",
+    "I'll Do It-Heidi Montag": "m4a",
+    "RISE-The Glitch Mob": "mp3",
+    "Unstoppable-Sia": "mp3"
+  },
+  "favorite": {
+    "Angel(Live)-张杰": "mp3",
+    "Infinity-JaymesYoung": "mp3",
+    "Relax(TakeItEasy)-MIKA": "wav",
+    "golden hour-JVKE": "m4a",
+    "一样的月光-徐佳莹": "mp3",
+    "三国恋-Tank": "mp3",
+    "下雨天-南拳妈妈": "mp3",
+    "不浪漫罪名-王杰": "mp3",
+    "不要忘记我爱你-张碧晨": "mp3",
+    "为你写诗-吴克群": "mp3",
+    "九儿-谭晶": "mp3",
+    "人世间-雷佳": "m4a",
+    "人间惊鸿客-叶里": "mp3",
+    "你一定要幸福-简弘亦": "mp3",
+    "你要的全拿走-胡彦斌": "mp3",
+    "修炼爱情-林俊杰": "m4a",
+    "偏偏喜欢你-陈百强": "mp3",
+    "凤凰于飞 (Live)-林俊杰": "m4a",
+    "凤凰传奇-海底": "flac",
+    "初恋-曾比特": "mp3",
+    "勋章-鹿晗": "mp3",
+    "千里之外-周杰伦费玉清": "mp3",
+    "只是太爱你-张敬轩": "mp3",
+    "后来的我们-五月天": "mp3",
+    "告白の夜-Ayasa绚沙": "mp3",
+    "嘉宾-张远": "mp3",
+    "多远都要在一起-G": "E.M. 邓紫棋.m4a",
+    "夜曲-周杰伦": "m4a",
+    "够钟-周柏豪": "wav",
+    "大眠-王心凌": "mp3",
+    "天后-陈势安": "mp3",
+    "天堂-腾格尔": "mp3",
+    "天梯-C AllStar": "m4a",
+    "天行九歌-霍尊": "m4a",
+    "太多-陈冠蒲": "mp3",
+    "如愿-王菲": "mp3",
+    "如果你也听说-张惠妹": "mp3",
+    "学不会-林俊杰": "mp3",
+    "完-陈奕迅": "mp3",
+    "寂寞先生-曹格": "mp3",
+    "小小-容祖儿": "mp3",
+    "小河淌水-龚琳娜": "mp3",
+    "就让这大雨全都落下-容祖儿": "mp3",
+    "弥敦道-洪卓立": "mp3",
+    "心墙-郭静": "mp3",
+    "心淡-容祖儿": "wav",
+    "忘记时间-胡歌": "mp3",
+    "念念不忘-麦浚龙": "mp3",
+    "悟空-戴荃": "mp3",
+    "想你的夜-关喆": "mp3",
+    "想见你想见你想见你-八三夭": "mp3",
+    "我怀念的-林俊杰": "m4a",
+    "我是如此相信-周杰伦": "m4a",
+    "我爱你不问归期 - 白小白": "mp3",
+    "我的回忆不是我的-海鸣威": "mp3",
+    "我的太阳-帕瓦罗蒂": "wav",
+    "我的楼兰-云朵": "mp3",
+    "房间-刘瑞琦": "mp3",
+    "手心的蔷薇-林俊杰": "m4a",
+    "指纹-胡歌": "m4a",
+    "挥着翅膀的女孩-容祖儿": "wav",
+    "无名之辈-陈雪燃": "mp3",
+    "春秋-张敬轩": "mp3",
+    "暗香-沙宝亮": "wav",
+    "最后一页-江语晨": "mp3",
+    "最爱-周慧敏": "mp3",
+    "月光-胡彦斌": "mp3",
+    "月半小夜曲-李克勤": "mp3",
+    "有心人-张国荣": "mp3",
+    "李健-贝加尔湖畔": "mp3",
+    "极乐净土-Maria": "mp3",
+    "梁山伯与茱丽叶-曹格": "mp3",
+    "森林-MR": "mp3",
+    "毛不易 - 红颜旧 (Live)": "flac",
+    "没离开过-林志炫": "mp3",
+    "浪漫血液-林俊杰": "mp3",
+    "爱在记忆中找你-林峰": "mp3",
+    "爱得太迟-古巨基": "mp3",
+    "爱是你我-刀郎": "mp3",
+    "爱的故事上集-孙耀威": "mp3",
+    "男人KTV-侧田": "mp3",
+    "男儿当自强-林子祥": "mp3",
+    "眼鼻嘴-太阳": "mp3",
+    "突然好想你-五月天": "mp3",
+    "窗-虎二": "mp3",
+    "答应不爱你-郑中基": "mp3",
+    "红蔷薇白玫瑰-G": "E.M. 邓紫棋.m4a",
+    "练习-刘德华": "mp3",
+    "罗生门-麦浚龙": "mp3",
+    "耿耿于怀-麦浚龙": "mp3",
+    "背对背拥抱-林俊杰": "m4a",
+    "致姗姗来迟的你-阿肆,林宥嘉": "mp3",
+    "花海-周杰伦": "m4a",
+    "这份爱-Davichi": "mp3",
+    "雅俗共赏-许嵩": "mp3",
+    "靠近-袁娅维": "mp3",
+    "风的季节-Soler": "mp3"
+  },
+  "like": {
+    "Far Away from Home-Groove Coverage": "m4a",
+    "Letting Go (Live版)-吉克隽逸＋汪苏泷": "m4a",
+    "Scarborough Fair (斯卡布罗集市)-Sarah Brightman": "m4a",
+    "Звезда-Vitas": "m4a",
+    "Криком журавлиным(鹤唳)-Vitas": "m4a",
+    "Посвящение(奉献)-Vitas": "flac",
+    "云宫迅音-许镜清": "mp3",
+    "你是我的眼-林宥嘉": "m4a",
+    "假如爱有天意-李健": "m4a",
+    "傻子-林宥嘉": "m4a",
+    "光年之外-G": "E.M. 邓紫棋.m4a",
+    "光的方向-张碧晨": "m4a",
+    "关键词-林俊杰": "m4a",
+    "刘惜君-执迷不悔(Live)": "mp3",
+    "卷珠帘 (Live)-费玉清": "m4a",
+    "卷珠帘-霍尊": "m4a",
+    "后知后觉-冯允谦": "m4a",
+    "嘉宾(粤)-张远": "m4a",
+    "嘉宾-张远": "m4a",
+    "国王与乞丐-华晨宇": "mp3",
+    "堆积情感-邓岳章": "m4a",
+    "天龙八部之宿敌-许嵩": "mp3",
+    "好想爱这个世界啊-华晨宇": "mp3",
+    "如果爱忘了-蓝心羽": "m4a",
+    "开始懂了-孙燕姿": "m4a",
+    "张靓颖、汪苏泷-金风玉露 (Live)": "mp3",
+    "心墙-林俊杰": "m4a",
+    "情意结-邓岳章": "m4a",
+    "情歌-侧田": "m4a",
+    "想自由-林宥嘉": "m4a",
+    "慢慢-张学友": "mp3",
+    "时光背面的我-刘至佳": "mp3",
+    "月球上的人-陈奕迅": "mp3",
+    "月球下的人-李幸倪": "m4a",
+    "桃花诺-G": "E.M. 邓紫棋.m4a",
+    "残酷月光-林宥嘉": "m4a",
+    "永不失联的爱-周兴哲": "mp3",
+    "浪费-林宥嘉": "m4a",
+    "海底（Live）-凤凰传奇": "mp3",
+    "潇洒走一回-叶倩文": "m4a",
+    "無心愛-古巨基": "m4a",
+    "爱不得忘不舍-白小白": "m4a",
+    "爱错-王力宏": "m4a",
+    "玫瑰少年-五月天": "m4a",
+    "真的爱着你 (明慧版)-明慧": "m4a",
+    "神秘嘉宾-林宥嘉": "m4a",
+    "童话镇 - 陈一发儿": "m4a",
+    "缘分一道桥-王力宏": "m4a",
+    "花香-周传雄": "m4a",
+    "落花流水-陈奕迅": "m4a",
+    "薛之谦 - 天外来物": "mp3",
+    "赤伶（逆水寒戏曲玩法推广曲）-谭晶": "m4a",
+    "起风了（旧版） - 买辣椒也用券": "m4a",
+    "那些年-胡夏": "m4a",
+    "那女孩对我说-小阿七": "m4a",
+    "高山低谷-林奕匡": "m4a",
+    "高山低谷-郑秀文": "mp3",
+    "黑夜问白天-林俊杰": "m4a",
+    "산다는 건 (活着 )-洪真英": "m4a"
+  }
+}
 ```
 
-### CSS 实现文字渐变色
+### 歌曲获取
 
-https://www.jianshu.com/p/3a5bbfbf5957
+```http request
+GET /audio/Angel(Live)-%E5%BC%A0%E6%9D%B0?suffix=mp3&currentPlaylistChoose=favorite HTTP/1.1
+Accept: */*
+Accept-Encoding: identity;q=1, *;q=0
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+Connection: keep-alive
+Host: localhost:8891
+Range: bytes=0-
+Referer: http://127.0.0.1:5500/
+Sec-Fetch-Dest: audio
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.79
+dnt: 1
+sec-ch-ua: "Not.A/Brand";v="8", "Chromium";v="114", "Microsoft Edge";v="114"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
 
-### 太极图案绘制
-
-思路使用
-
-![](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_Yzg079gImK.png)
-
-通过边框画出一个圆
-
-再使用 before after 伪元素画出两个圆
-
-覆盖到中间, 通过重叠组合画出一个太极的图案
-
-[前端太极图怎么用一个盒子写出？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/386932078)
-
-![](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_piP0FtY5QB.png)
-
-```html
-<body>
-    <div class="box"></div>
-</body>
 ```
 
-css
 
-```css
-body {
- background-color: #668;
-        }
+### 歌词
 
- .box {
- position: relative;
- margin: 0 auto;
- width: 100px;
- height: 200px;
- background-color: black;
- border-right: 100px solid white;
- border-radius: 50%;
-        }
+```http request
+GET /lyrics/Angel(Live)-%E5%BC%A0%E6%9D%B0 HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+Connection: keep-alive
+Host: localhost:8891
+Origin: http://127.0.0.1:5500
+Referer: http://127.0.0.1:5500/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.79
+dnt: 1
+sec-ch-ua: "Not.A/Brand";v="8", "Chromium";v="114", "Microsoft Edge";v="114"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
 
- .box::before {
- content: "";
- position: absolute;
- left: 45px;
- width: 10px;
- height: 10px;
- border-radius: 50%;
- background-color: white;
- border: 45px solid black;
-        }
-
- .box::after {
- content: "";
- position: absolute;
- left: 45px;
- bottom: 0px;
- width: 10px;
- height: 10px;
- border-radius: 50%;
- background-color: black;
- border: 45px solid white;
-        }
 ```
 
-### 斗罗大陆
+响应
 
-#### 唐三招式
-
-玄天六奥义：控鹤擒龙，暗器百解，鬼影迷踪，玄玉手，玄天功，紫极魔瞳。
-
----
-
-昊天锤　　乱披风（昊天宗官方魂技）九九归一、黑龙升天、孤注一掷、大须弥锤、昊天九决 　　大须弥锤奥义：炸环、须弥凌天 　　自创魂技：乱披风之舞 昊天飞锤 蓝银皇　　（先为普通蓝银草，在凝结第五魂环时由蓝银皇血统觉醒）10个魂环：9红1蓝金 　　第一魂技：缠绕；未知 　　第二魂技：寄生；未知 　　第三魂技：蛛网束缚；未知 　　第四魂技：蓝银囚笼，变异魂技：蓝银突刺； 　　第五魂技：蓝银霸皇枪；未知 　　第六魂技：（原）虚无；爆杀八段摔（现）未知 　　第七魂技：蓝银真身；未知 　　第八魂技：蓝银邪魔镜之灭；蓝银虎鲸魔之摄 　　第九魂技：蓝银天青龙之魂；蓝银青龙缠之韧 　　昊天锤 9个魂环： 8红1赤金 　　铭刻有杀神领域(后进化） 　　第一魂环魂技：泰坦之锤（强攻）大地之力（辅助） 　　第二-五魂技：未知 　　第六魂技：大地蚁皇斩 ；未知 　　第七魂技：昊天真身 ；未知 　　第八魂技：千均壁垒 （文中提到十万年魂环却只出产了这一个魂技） 　　第九魂技：无
-　　【黄金十三戟】 　　【第一式】【无定风波】 　　限制性神技，在一定时间内封印住敌方，最高封印时间八秒，最低不少于三秒 　　【第二式】【千载空悠】 　　群攻性神技，曾重创6名封号斗罗 　　【第三式】【一去不返】 　　单攻性神技，重创比比东 　　【第十式】【海之阳】 　　治疗性神技，增加能量恢复速度 　　【第十三式】【身戟合一，斗转星移】 　　单攻性神技，打碎神级千仞雪的拼命一击，将之重创 　　【十三合一】【海神的黄昏】 　　唐三最强奥义，神戟一出，毁天灭地 　　【神技】【海神，吞噬】 　　【神技】【修罗，审判】 　　【神技】【双神共存】 　　小舞与唐三融合，唐三可发动修罗神力 　　【神技】【碧波，海神，无尽蔚蓝】
-　　外附魂骨　　海神八翼（击杀人面魔蛛兽获得，分三阶段进化，进化前为八蛛矛） 　　技能：吞噬，腐蚀性剧毒，吞噬金丝（吞噬升级，金丝无视攻击，附带毒性），过滤（吞噬的魂力） 头部魂骨　　精神凝聚之智慧头骨（后名瀚海头骨，武魂殿奖励魂骨之一，与瀚海乾坤罩融合。） 　　技能：瀚海护身罩，乾坤定神罩，瀚海狂澜，乾坤破魔，紫极神光 　　效果：提升精神力 右臂魂骨　　柔骨魅兔右臂骨（小舞献祭时唐三得到，后为复活小舞而剥离） 　　技能：瞬移、无敌金身 　　天青牛蟒右臂骨（天青牛蟒献祭得到） 　　技能：天青迟钝神爪；天青寂灭雷霆。 左臂魂骨　　泰坦巨猿左臂骨（泰坦巨猿献祭得到） 　　技能：重力泥沼；泰坦苍穹破。 左腿魂骨　　邪魔虎鲸王左腿骨（击杀邪魔虎鲸王得到） 　　技能：虎鲸邪魔斧；虎鲸碎牙斩。 右腿魂骨　　蓝银帝皇右腿骨（唐三母亲蓝银皇遗物） 　　技能：飞翔；野火烧不尽，春风吹又生 　　躯干魂骨 　　深海魔鲸王躯干魂骨（击杀深海魔鲸王得到） 　　技能：未知 魂骨套装技能　　效果：右腿，右臂（小舞），外附，头部的四块魂骨相连，形成盔甲。能力不明，每次使用耗费1/3魂力。魂骨套装并不稳定。
-　　领域　杀神领域 　　杀戮之都百战胜，地狱之路勇闯得 　　【增加气势】削弱对方实力 　　【杀戮突击】杀神领域以直线方向释放，锁定一个目标后，速度提升百分之百，攻击力提升百分之三十。 　　【领域进化】为修罗地狱：杀气在修罗地狱中会成实质，变成恐怖的攻击。可发动技能：修罗旋圆杀阵 　　【修罗现身】 能力发挥至强杀气并把杀气转化为攻击力 　　蓝银领域　 　　传承蓝银皇获得 　　隔绝外界不良影响和声音 　　控制领域范围内的所有蓝银草使用技能，现在只能使用缠绕3领域探查。以领域为媒，在领域范围内配合精神力探查周围的信息 　　蓝银领域第三次进化技能，森罗万象。附带效果，同化、压制。压制技能会将武魂属性全部压制百分之十，包括魂力释放也会降低百分之十。在领域中停留的时间越长，压制的效果也会随之增强 ，吞噬金丝。 　　蓝银领域终极进化，海纳百川 在拥有蓝银草的地方，领域能够将所有蓝银草地生命力转化为蓝银帝皇所需要地任何形态能量，补充自身，只要还有蓝银草，那么，蓝银帝皇的能量就不会枯竭。这能量转化可以是生命力，也可以是魂力或者精神力。这最终极地领域效果无疑令蓝银帝皇在森林中与同等级对手战斗时能够处于无敌状态。 　　海神领域 　　传承海神获得 　　效果：通过凝聚海神领域来获得大海的力量，补充自己的魂力 　　【碧波、海神、无尽蔚蓝】将大海之力转化为攻击之力
+```json5
+{
+  "lrc": "﻿[id:1306436173]\n[ti:云中的Angel (Live)]\n[ar:张杰]\n[al:Just For Star洛杉矶音乐分享会]\n[00:00.00]作词 : 谢小娜\n[00:00.33]作曲 : 谢小娜\n[00:00.66]张杰-云中的Angel（Live）\n[00:01.72]出品：Planet Culture 张杰行星文化音乐厂牌\n[00:27.74]小时候总爱抬头看白云朵朵\n[00:35.68]哼着我最爱的angel\n[00:43.57]天上白云一朵朵都住着angel\n[00:51.96]为每个相信童话的孩子守候\n[01:02.49]我最爱的那首歌最爱的angel\n[01:10.89]我到什么时候才能遇见我的angel\n[01:17.92]我最爱的那首歌最爱的angel\n[01:26.73]我不是王子也会拥有我的angel\n[01:54.52]每次受伤的时候天上的angel\n[02:02.30]会默默地为我流泪\n[02:10.44]每下一场小雨都像一个angel\n[02:18.80]陪伤心的人等着阳光出现时候\n[02:29.89]我最爱的那首歌最爱的angel\n[02:38.84]我到什么时候才能遇见我的angel\n[02:45.83]我最爱的那首歌最爱的angel\n[02:54.38]我不是王子也会拥有我的angel\n[03:10.43]当你学会勇敢就会遇见你的angel\n[03:38.21]Angel\n"
+}
+```
