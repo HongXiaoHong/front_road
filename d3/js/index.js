@@ -34,6 +34,19 @@ $(document).ready(function () {
         .then((gdbData) => {
 
             const svg = getSVG()
+
+            svg
+                .append('text')
+                .attr('transform', 'rotate(-90)')
+                .attr('x', -200)
+                .attr('y', 80)
+                .text('Gross Domestic Product');
+            
+            svg.append('text')
+            .attr('x', svgData.width / 2 - 30)
+            .attr('y', svgData.height - 10)
+            .text('More Information: http://www.bea.gov/national/pdf/nipaguid.pdf')
+            .attr('class', 'info');
             const years = gdbData.data.map(arr => arr[0]).map(str => getDateValue(str));
             const scaleX = d3.scaleLinear()
                 .domain([d3.min(years), d3.max(years)])
@@ -48,12 +61,11 @@ $(document).ready(function () {
                 .append("rect")
                 .attr("width", svgData.rectStyle.width)
                 .attr("height", d => getRectHeight(d, maxGDP))
-                .attr("fill", "steelblue")
+                .attr("fill", "#33adff")
                 .attr("x", (d, i) => scaleX(getDateValue(d[0])))
                 .attr("y", d => scaleY(d[1]))
                 .attr("class", "bar")
                 .attr('index', (d, i) => i)
-                .style('fill', '#33adff')
                 .on('mouseover', function (event, d) {
                     var i = this.getAttribute('index');
                     tooltip.transition().duration(200).style('opacity', 0.9);

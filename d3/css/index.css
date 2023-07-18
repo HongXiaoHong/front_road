@@ -22,3 +22,7 @@
     border-radius: 2px;
     pointer-events: none;
 }
+
+.info {
+    font-size: 0.8em;
+}
