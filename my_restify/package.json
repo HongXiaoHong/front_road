@@ -1,0 +1,14 @@
+{
+  "name": "my_restify",
+  "version": "1.0.0",
+  "description": "first restify app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hong",
+  "license": "ISC",
+  "devDependencies": {
+    "restify": "^11.1.0"
+  }
+}
