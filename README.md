@@ -12,17 +12,202 @@
 
 ### d3 | d3 做了一个柱状图
 
-D3 高度可定制化
-就是说 对 svg 的知识要有所了解
+D3 高度可定制化 就是说 对 svg 的知识要有所了解
 
 ![柱状图](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_gSh3E23rfG.gif)
 
-
-
-
-
 # 总结
 
+## 官网示例
+
+### 柱状图
+
+```html
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>american gdp</title>
+</head>
+
+<body>
+<div id="container"></div>
+</body>
+
+
+<!--<script src="./js/index.js"  type="module"></script>-->
+<script type="module">
+
+    import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+
+    const data = [{"letter": "A", "frequency": 0.08167}, {"letter": "B", "frequency": 0.01492}, {
+        "letter": "C",
+        "frequency": 0.02782
+    }, {"letter": "D", "frequency": 0.04253}, {"letter": "E", "frequency": 0.12702}, {
+        "letter": "F",
+        "frequency": 0.02288
+    }, {"letter": "G", "frequency": 0.02015}, {"letter": "H", "frequency": 0.06094}, {
+        "letter": "I",
+        "frequency": 0.06966
+    }, {"letter": "J", "frequency": 0.00153}, {"letter": "K", "frequency": 0.00772}, {
+        "letter": "L",
+        "frequency": 0.04025
+    }, {"letter": "M", "frequency": 0.02406}, {"letter": "N", "frequency": 0.06749}, {
+        "letter": "O",
+        "frequency": 0.07507
+    }, {"letter": "P", "frequency": 0.01929}, {"letter": "Q", "frequency": 0.00095}, {
+        "letter": "R",
+        "frequency": 0.05987
+    }, {"letter": "S", "frequency": 0.06327}, {"letter": "T", "frequency": 0.09056}, {
+        "letter": "U",
+        "frequency": 0.02758
+    }, {"letter": "V", "frequency": 0.00978}, {"letter": "W", "frequency": 0.0236}, {
+        "letter": "X",
+        "frequency": 0.0015
+    }, {"letter": "Y", "frequency": 0.01974}, {"letter": "Z", "frequency": 0.00074}];
+    // Declare the chart dimensions and margins.
+    const width = 928;
+    const height = 500;
+    const marginTop = 30;
+    const marginRight = 0;
+    const marginBottom = 30;
+    const marginLeft = 40;
+
+    // Declare the x (horizontal position) scale.
+    const x = d3.scaleBand()
+            .domain(d3.groupSort(data, ([d]) => -d.frequency, (d) => d.letter)) // descending frequency
+            .range([marginLeft, width - marginRight])
+            .padding(0.1);
+
+    // Declare the y (vertical position) scale.
+    const y = d3.scaleLinear()
+            .domain([0, d3.max(data, (d) => d.frequency)])
+            .range([height - marginBottom, marginTop]);
+
+    // Create the SVG container.
+    const svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("viewBox", [0, 0, width, height])
+            .attr("style", "max-width: 100%; height: auto;");
+
+    // Add a rect for each bar.
+    svg.append("g")
+            .attr("fill", "steelblue")
+            .selectAll()
+            .data(data)
+            .join("rect")
+            .attr("x", (d) => x(d.letter))
+            .attr("y", (d) => y(d.frequency))
+            .attr("height", (d) => y(0) - y(d.frequency))
+            .attr("width", x.bandwidth());
+
+    // Add the x-axis and label.
+    svg.append("g")
+            .attr("transform", `translate(0,${height - marginBottom})`)
+            .call(d3.axisBottom(x).tickSizeOuter(0));
+
+    // Add the y-axis and label, and remove the domain line.
+    svg.append("g")
+            .attr("transform", `translate(${marginLeft},0)`)
+            .call(d3.axisLeft(y).tickFormat((y) => (y * 100).toFixed()))
+            .call(g => g.select(".domain").remove())
+            .call(g => g.append("text")
+                    .attr("x", -marginLeft)
+                    .attr("y", 10)
+                    .attr("fill", "currentColor")
+                    .attr("text-anchor", "start")
+                    .text("↑ Frequency (%)"));
+
+
+</script>
+
+</html>
+
+```
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_o6JnQ3JFt5.png)
+
+其实官网是直接返回 dom 节点, 让我们可以直接插入到我们的页面中
+
+```javascript
+chart = {
+    // Declare the chart dimensions and margins.
+    const width = 928;
+    const height = 500;
+    const marginTop = 30;
+    const marginRight = 0;
+    const marginBottom = 30;
+    const marginLeft = 40;
+
+    // Declare the x (horizontal position) scale.
+    const x = d3.scaleBand()
+        .domain(d3.groupSort(data, ([d]) => -d.frequency, (d) => d.letter)) // descending frequency
+        .range([marginLeft, width - marginRight])
+        .padding(0.1);
+
+    // Declare the y (vertical position) scale.
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(data, (d) => d.frequency)])
+        .range([height - marginBottom, marginTop]);
+
+    // Create the SVG container.
+    const svg = d3.create("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("viewBox", [0, 0, width, height])
+        .attr("style", "max-width: 100%; height: auto;");
+
+    // Add a rect for each bar.
+    svg.append("g")
+        .attr("fill", "steelblue")
+        .selectAll()
+        .data(data)
+        .join("rect")
+        .attr("x", (d) => x(d.letter))
+        .attr("y", (d) => y(d.frequency))
+        .attr("height", (d) => y(0) - y(d.frequency))
+        .attr("width", x.bandwidth());
+
+    // Add the x-axis and label.
+    svg.append("g")
+        .attr("transform", `translate(0,${height - marginBottom})`)
+        .call(d3.axisBottom(x).tickSizeOuter(0));
+
+    // Add the y-axis and label, and remove the domain line.
+    svg.append("g")
+        .attr("transform", `translate(${marginLeft},0)`)
+        .call(d3.axisLeft(y).tickFormat((y) => (y * 100).toFixed()))
+        .call(g => g.select(".domain").remove())
+        .call(g => g.append("text")
+            .attr("x", -marginLeft)
+            .attr("y", 10)
+            .attr("fill", "currentColor")
+            .attr("text-anchor", "start")
+            .text("↑ Frequency (%)"));
+
+    // Return the SVG element.
+    return svg.node();
+}
+```
+
+下载页面的数据 到本地
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_YuOSMu0Muf.png)
+
+你可以使用 Plot.js 对上面的操作进行简化
+
+```javascript
+Plot.plot({
+    y: {percent: true},
+    marks: [
+        Plot.barY(data, {x: "letter", y: "frequency", fill: "steelblue", sort: {x: "-y"}}),
+        Plot.ruleY([0])
+    ]
+})
+```
 
 ## 请求
 
@@ -135,6 +320,7 @@ javascriptfetch('/json/cats.json')
 在上述示例中，第二个 `then` 方法返回了一个新的 Promise 对象，在 2 秒后解析为 `'Additional data'`。然后，该值被传递给下一个 `then` 方法进行处理。
 
 通过返回 Promise 对象，我们可以处理更多的异步操作，确保它们按照正确的顺序执行，并在需要时捕获错误(通过 `catch` 方法)进行处理。这样可以提高代码的可读性和灵活性。
+
 ### fetch("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json") .then((response) => { return response.json() }) response 获取("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json”) .then（（响应) => { 返回响应.json() }) 响应
 
 在这段代码中，`fetch()` 函数发送了一个 GET 请求到指定的
@@ -272,44 +458,44 @@ data.forEach(function(d) {
 
 1. **选择元素**：D3 使用选择器语法来选择页面上的元素。常用的选择方法包括：
 
-   - `d3.select(selector)`：选择第一个匹配选择器的元素。
-   - `d3.selectAll(selector)`：选择所有匹配选择器的元素。
+    - `d3.select(selector)`：选择第一个匹配选择器的元素。
+    - `d3.selectAll(selector)`：选择所有匹配选择器的元素。
 
 2. **绑定数据**：D3 允许将数据与元素进行绑定，从而可以根据数据来创建、更新和删除元素。常用的绑定方法包括：
 
-   - `selection.data(data[, key])`：将数据绑定到元素。
-   - `selection.enter()`：获取与数据绑定但尚未在 DOM 中表示的元素。
-   - `selection.exit()`：获取与数据绑定但在 DOM 中不存在的元素。
+    - `selection.data(data[, key])`：将数据绑定到元素。
+    - `selection.enter()`：获取与数据绑定但尚未在 DOM 中表示的元素。
+    - `selection.exit()`：获取与数据绑定但在 DOM 中不存在的元素。
 
 3. **创建元素**：D3 可以用于创建新的元素，并将其添加到 DOM 中。常用的创建方法包括：
 
-   - `selection.append(name)`：在选定的元素内追加一个新元素。
-   - `selection.insert(name[, before])`：在选定的元素内插入一个新元素。
+    - `selection.append(name)`：在选定的元素内追加一个新元素。
+    - `selection.insert(name[, before])`：在选定的元素内插入一个新元素。
 
 4. **设置属性和样式**：D3 可以用于设置元素的属性和样式。常用的设置方法包括：
 
-   - `selection.attr(name[, value])`：设置元素的属性值。
-   - `selection.style(name[, value[, priority]])`：设置元素的样式。
+    - `selection.attr(name[, value])`：设置元素的属性值。
+    - `selection.style(name[, value[, priority]])`：设置元素的样式。
 
 5. **操作元素**：D3 可以用于对元素进行各种操作，例如移动、缩放、旋转等。常用的操作方法包括：
 
-   - `selection.transition()`：创建过渡效果，用于实现动画效果。
-   - `selection.remove()`：从 DOM 中移除元素。
-   - `selection.classed(name[, value])`：添加或移除元素的类名。
+    - `selection.transition()`：创建过渡效果，用于实现动画效果。
+    - `selection.remove()`：从 DOM 中移除元素。
+    - `selection.classed(name[, value])`：添加或移除元素的类名。
 
 6. **处理事件**：D3 可以用于处理元素上的事件，例如鼠标点击、鼠标移动等。常用的事件处理方法包括：
 
-   - `selection.on(type[, listener[, options]])`：为元素添加事件监听器。
+    - `selection.on(type[, listener[, options]])`：为元素添加事件监听器。
 
 7. **比例尺和轴**：D3 提供了比例尺和轴的功能，用于将数据映射到可视化表示中。常用的比例尺和轴的方法包括：
 
-   - `d3.scaleLinear()`：创建线性比例尺。
-   - `d3.axisBottom(scale)`：创建底部轴。
+    - `d3.scaleLinear()`：创建线性比例尺。
+    - `d3.axisBottom(scale)`：创建底部轴。
 
 8. **数据处理**：D3 提供了强大的数据处理功能，用于对数据进行转换和操作。常用的数据处理方法包括：
 
-   - `d3.extent(data[, accessor])`：计算数据的最小值和最大值。
-   - `d3.nest().key(keyFunction)`：根据指定的键函数对数据进行分组。
+    - `d3.extent(data[, accessor])`：计算数据的最小值和最大值。
+    - `d3.nest().key(keyFunction)`：根据指定的键函数对数据进行分组。
 
 以上只是一些常用的 D3.js 方法，D3.js 还提供了许多其他功能和方法，用于实现各种数据可视化需求。掌握这些方法可以帮助你更好地使用 D3.js 创建交互性和动态的数据可视化。你可以查阅 D3.js
 的官方文档以获取更详细的方法和用法。
