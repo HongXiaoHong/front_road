@@ -203,6 +203,11 @@ chart = {
 
 你可以使用 Plot.js 对上面的操作进行简化
 https://observablehq.com/plot/
+
+还有一个叫做 plotly.js 的也可以简化
+https://github.com/plotly/plotly.js
+https://plotly.com/javascript/
+
 ```javascript
 Plot.plot({
     y: {percent: true},
