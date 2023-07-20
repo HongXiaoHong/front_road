@@ -20,6 +20,10 @@ D3 高度可定制化 就是说 对 svg 的知识要有所了解
 
 ## 官网示例
 
+https://d3js.org/getting-started
+
+d3 示例:  https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable
+
 ### 柱状图
 
 ```html
@@ -198,7 +202,7 @@ chart = {
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_YuOSMu0Muf.png)
 
 你可以使用 Plot.js 对上面的操作进行简化
-
+https://observablehq.com/plot/
 ```javascript
 Plot.plot({
     y: {percent: true},
