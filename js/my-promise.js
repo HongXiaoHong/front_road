@@ -15,7 +15,8 @@ class MyPromise {
     constructor(fn) {
         this._status = MyPromise.PENDING;
         try {
-            fn(this._resolve, this._reject.bind(this));
+            // 通过绑定 this, 显示指定执行上下文是当前对象是 MyPromise 对象, 而不是全局对象
+            fn(this._resolve.bind(this), this._reject.bind(this));
         } catch (e) {
             console.error(e);
         }
