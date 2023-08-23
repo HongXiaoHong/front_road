@@ -22,6 +22,7 @@ class MyPromise {
             fn(this.#resolve.bind(this), this.#reject.bind(this));
         } catch (e) {
             console.error(e);
+            this.#reject(e)
         }
     }
 
