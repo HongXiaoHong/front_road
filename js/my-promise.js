@@ -26,7 +26,6 @@ class MyPromise {
     _resolve(data) {
         this._status = MyPromise.FULFILLED;
         this._data = data;
-        console.log("data is ", data);
     }
 
     // 状态 => 已拒绝 设置错误信息
@@ -34,6 +33,15 @@ class MyPromise {
         this._status = MyPromise.REJECTED;
         this._error = error;
         console.error(error);
+    }
+
+    then(onFulfilled, onRejected) {
+        if (this._status === MyPromise.FULFILLED) {
+            onFulfilled(this._data)
+        }
+        if (this._status === MyPromise.REJECTED) {
+            onRejected(this._error)
+        }
     }
 }
 
@@ -47,6 +55,6 @@ new MyPromise(function(resolve, reject) {
     console.log("我进入 promise 的构造函数啦");
     resolve("hello promise");
 })
-/* .then((data) => {
+ .then((data) => {
     console.log("data is ", data);
-}); */
+});
