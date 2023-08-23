@@ -11,36 +11,39 @@ class MyPromise {
     static PENDING = "PENDING";
     static FULFILLED = "FULFILLED";
     static REJECTED = "REJECTED";
+    #status;
+    #data;
+    #error;
 
     constructor(fn) {
-        this._status = MyPromise.PENDING;
+        this.#status = MyPromise.PENDING;
         try {
             // 通过绑定 this, 显示指定执行上下文是当前对象是 MyPromise 对象, 而不是全局对象
-            fn(this._resolve.bind(this), this._reject.bind(this));
+            fn(this.#resolve.bind(this), this.#reject.bind(this));
         } catch (e) {
             console.error(e);
         }
     }
 
     // 将 promise 的状态置为 已兑现 设置数据
-    _resolve(data) {
-        this._status = MyPromise.FULFILLED;
-        this._data = data;
+    #resolve(data) {
+        this.#status = MyPromise.FULFILLED;
+        this.#data = data;
     }
 
     // 状态 => 已拒绝 设置错误信息
-    _reject(error) {
-        this._status = MyPromise.REJECTED;
-        this._error = error;
+    #reject(error) {
+        this.#status = MyPromise.REJECTED;
+        this.#error = error;
         console.error(error);
     }
 
     then(onFulfilled, onRejected) {
-        if (this._status === MyPromise.FULFILLED) {
-            onFulfilled(this._data)
+        if (this.#status === MyPromise.FULFILLED) {
+            onFulfilled(this.#data)
         }
-        if (this._status === MyPromise.REJECTED) {
-            onRejected(this._error)
+        if (this.#status === MyPromise.REJECTED) {
+            onRejected(this.#error)
         }
     }
 }
