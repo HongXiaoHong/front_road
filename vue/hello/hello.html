@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+<div id="app">{{ message }}
+    <input v-model="info" @input="infoChange">
+</div>
+
+</body>
+<script>
+    const {createApp, ref} = Vue
+    var message = 'Hello vue!'
+    var info = ref('first')
+
+    function infoChange() {
+        console.log(info.value);
+        message = info.value;
+    }
+
+    createApp({
+        setup() {
+
+            return {
+                message, info, infoChange
+            }
+        }
+    }).mount('#app')
+</script>
+</html>
