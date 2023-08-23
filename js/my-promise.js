@@ -22,13 +22,17 @@ class MyPromise {
         }
     }
 
+    // 将 promise 的状态置为 已兑现 设置数据
     _resolve(data) {
         this._status = MyPromise.FULFILLED;
+        this._data = data;
         console.log("data is ", data);
     }
 
+    // 状态 => 已拒绝 设置错误信息
     _reject(error) {
         this._status = MyPromise.REJECTED;
+        this._error = error;
         console.error(error);
     }
 }
