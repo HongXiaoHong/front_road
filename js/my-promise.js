@@ -1,10 +1,3 @@
-/* new Promise((resolve, reject) => {
-    console.log("我进入 promise 的构造函数啦");
-    resolve("hello promise");
-}).then((data) => {
-    console.log("data is ", data);
-});
- */
 
 
 class MyPromise {
@@ -13,7 +6,7 @@ class MyPromise {
     static REJECTED = "REJECTED";
     #status;
     #result;
-    #handler = [];
+    #handlers = [];
 
     constructor(fn) {
         this.#status = MyPromise.PENDING;
@@ -46,31 +39,34 @@ class MyPromise {
     }
 
     then(onFulfilled, onRejected) {
-        if (this.#status === MyPromise.FULFILLED) {
-            onFulfilled(this.#result)
-        }
-        if (this.#status === MyPromise.REJECTED) {
-            onRejected(this.#result)
-        }
-        if (this.#status === MyPromise.PENDING) {
-            this.#handler.push({
+        return new MyPromise((resolve, reject) => {
+            this.#handlers.push({
                 onFulfilled,
-                onRejected
-            })
-        }
+                onRejected,
+                resolve,
+                reject
+            });
+            this.#run();
+        })
     }
 
     #run() {
-        while(this.#handler.length) {
+
+        if (this.#status === MyPromise.PENDING) return;
+        while (this.#handlers.length) {
             let {
                 onFulfilled,
                 onRejected
-            } = this.#handler.shift();
+            } = this.#handlers.shift();
             if (this.#status === MyPromise.FULFILLED) {
-                onFulfilled(this.#result)
+                if (typeof onFulfilled == "function") {
+                    onFulfilled(this.#result)
+                }
             }
             if (this.#status === MyPromise.REJECTED) {
-                onRejected(this.#result)
+                if (typeof onRejected == "function") {
+                    onRejected(this.#result)
+                }
             }
         }
     }
@@ -92,8 +88,6 @@ new MyPromise(function (resolve, reject) {
     .then((data) => {
         console.log("data is ", data);
     });
-
-
 
 
 /*

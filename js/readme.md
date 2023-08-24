@@ -1,8 +1,9 @@
 # js 学习记录
 
-## 手写promise
+## my-promise.js | 手写promise
 手写一个 promise
-已完成
+
+### 已完成
 - 构造函数
     - 执行传进来执行的方法, 将resolve/reject传递给参数中的方法
 - then
@@ -14,9 +15,10 @@
 - resolve/reject 方法增加状态改变判断, 不是待定不做动作, 因为 promise 的状态是不可逆的
 - 异步错误无法捕获
 
-存在问题:
+### 存在问题:
+- 多个 then 进行调用
 
-已解决问题:
+### 已解决问题:
 - 传递 resolve 函数出现 this 访问变量的问题
     - 通过绑定 this, 显示指定执行上下文是当前对象是 MyPromise 对象, 而不是全局对象
 - 异步执行之后无法调用 then 方法
