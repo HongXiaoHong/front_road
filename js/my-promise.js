@@ -27,17 +27,20 @@ class MyPromise {
 
     // 将 promise 的状态置为 已兑现 设置数据
     #resolve(data) {
+        if (this.#status !== MyPromise.PENDING) return;
         this.#changeStatus(MyPromise.FULFILLED, data);
-    }
-
-    #changeStatus(status, data) {
-        this.#status = status;
-        this.#result = data;
     }
 
 // 状态 => 已拒绝 设置错误信息
     #reject(error) {
+        if (this.#status !== MyPromise.PENDING) return;
         this.#changeStatus(MyPromise.REJECTED, error);
+    }
+
+// 状态修改, 设置数据
+    #changeStatus(status, data) {
+        this.#status = status;
+        this.#result = data;
     }
 
     then(onFulfilled, onRejected) {
@@ -56,10 +59,10 @@ class MyPromise {
 }) */
 // 如果不是明确对象调用, 或者是使用 call/apply/bind 指定调用者
 // 像这种把函数传递传递执行的, 就会把执行上下文置为全局
-new MyPromise(function(resolve, reject) {
+new MyPromise(function (resolve, reject) {
     console.log("我进入 promise 的构造函数啦");
     resolve("hello promise");
 })
- .then((data) => {
-    console.log("data is ", data);
-});
+    .then((data) => {
+        console.log("data is ", data);
+    });
