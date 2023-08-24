@@ -13,6 +13,7 @@ class MyPromise {
     static REJECTED = "REJECTED";
     #status;
     #result;
+    #handler = [];
 
     constructor(fn) {
         this.#status = MyPromise.PENDING;
@@ -27,20 +28,21 @@ class MyPromise {
 
     // 将 promise 的状态置为 已兑现 设置数据
     #resolve(data) {
-        if (this.#status !== MyPromise.PENDING) return;
         this.#changeStatus(MyPromise.FULFILLED, data);
     }
 
     // 状态 => 已拒绝 设置错误信息
     #reject(error) {
-        if (this.#status !== MyPromise.PENDING) return;
         this.#changeStatus(MyPromise.REJECTED, error);
     }
 
     // 状态修改, 设置数据
     #changeStatus(status, data) {
+        if (this.#status !== MyPromise.PENDING) return;
         this.#status = status;
         this.#result = data;
+        // 这里需要用到回调的函数, 所以需要把 then 方法的函数存到类的属性中
+        this.#run();
     }
 
     then(onFulfilled, onRejected) {
@@ -49,6 +51,27 @@ class MyPromise {
         }
         if (this.#status === MyPromise.REJECTED) {
             onRejected(this.#result)
+        }
+        if (this.#status === MyPromise.PENDING) {
+            this.#handler.push({
+                onFulfilled,
+                onRejected
+            })
+        }
+    }
+
+    #run() {
+        while(this.#handler.length) {
+            let {
+                onFulfilled,
+                onRejected
+            } = this.#handler.shift();
+            if (this.#status === MyPromise.FULFILLED) {
+                onFulfilled(this.#result)
+            }
+            if (this.#status === MyPromise.REJECTED) {
+                onRejected(this.#result)
+            }
         }
     }
 }
