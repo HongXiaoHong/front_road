@@ -31,13 +31,13 @@ class MyPromise {
         this.#changeStatus(MyPromise.FULFILLED, data);
     }
 
-// 状态 => 已拒绝 设置错误信息
+    // 状态 => 已拒绝 设置错误信息
     #reject(error) {
         if (this.#status !== MyPromise.PENDING) return;
         this.#changeStatus(MyPromise.REJECTED, error);
     }
 
-// 状态修改, 设置数据
+    // 状态修改, 设置数据
     #changeStatus(status, data) {
         this.#status = status;
         this.#result = data;
@@ -61,13 +61,20 @@ class MyPromise {
 // 像这种把函数传递传递执行的, 就会把执行上下文置为全局
 new MyPromise(function (resolve, reject) {
     console.log("我进入 promise 的构造函数啦");
-    resolve("hello promise");
+    setTimeout(() => {
+        // 存在问题 异步执行之后无法调用 then 方法
+        resolve("hello promise");
+    }, 0);
 })
     .then((data) => {
         console.log("data is ", data);
     });
 
 
+
+
+/*
+* 结果:
 new MyPromise(function (resolve, reject) {
     throw 123;
 })
@@ -78,11 +85,6 @@ new MyPromise(function (resolve, reject) {
     }, 0);
 })
 
-/*
-* 结果:
-D:\app\code\nodejs\node.exe D:\documents\projects\github\branch\front_road\js\my-promise.js
-我进入 promise 的构造函数啦
-data is  hello promise
 123
 
 D:\documents\projects\github\branch\front_road\js\my-promise.js:76
