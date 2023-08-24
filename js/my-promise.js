@@ -12,8 +12,7 @@ class MyPromise {
     static FULFILLED = "FULFILLED";
     static REJECTED = "REJECTED";
     #status;
-    #data;
-    #error;
+    #result;
 
     constructor(fn) {
         this.#status = MyPromise.PENDING;
@@ -29,22 +28,21 @@ class MyPromise {
     // 将 promise 的状态置为 已兑现 设置数据
     #resolve(data) {
         this.#status = MyPromise.FULFILLED;
-        this.#data = data;
+        this.#result = data;
     }
 
     // 状态 => 已拒绝 设置错误信息
     #reject(error) {
         this.#status = MyPromise.REJECTED;
-        this.#error = error;
-        console.error(error);
+        this.#result = error;
     }
 
     then(onFulfilled, onRejected) {
         if (this.#status === MyPromise.FULFILLED) {
-            onFulfilled(this.#data)
+            onFulfilled(this.#result)
         }
         if (this.#status === MyPromise.REJECTED) {
-            onRejected(this.#error)
+            onRejected(this.#result)
         }
     }
 }
