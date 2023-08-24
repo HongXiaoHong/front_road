@@ -66,3 +66,32 @@ new MyPromise(function (resolve, reject) {
     .then((data) => {
         console.log("data is ", data);
     });
+
+
+new MyPromise(function (resolve, reject) {
+    throw 123;
+})
+new MyPromise(function (resolve, reject) {
+    // 异步错误无法捕获
+    setTimeout(() => {
+        throw 123;
+    }, 0);
+})
+
+/*
+* 结果:
+D:\app\code\nodejs\node.exe D:\documents\projects\github\branch\front_road\js\my-promise.js
+我进入 promise 的构造函数啦
+data is  hello promise
+123
+
+D:\documents\projects\github\branch\front_road\js\my-promise.js:76
+        throw 123;
+        ^
+123
+(Use `node --trace-uncaught ...` to show where the exception was thrown)
+
+Node.js v18.16.1
+
+
+* */
