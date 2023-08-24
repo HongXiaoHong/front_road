@@ -27,14 +27,17 @@ class MyPromise {
 
     // 将 promise 的状态置为 已兑现 设置数据
     #resolve(data) {
-        this.#status = MyPromise.FULFILLED;
+        this.#changeStatus(MyPromise.FULFILLED, data);
+    }
+
+    #changeStatus(status, data) {
+        this.#status = status;
         this.#result = data;
     }
 
-    // 状态 => 已拒绝 设置错误信息
+// 状态 => 已拒绝 设置错误信息
     #reject(error) {
-        this.#status = MyPromise.REJECTED;
-        this.#result = error;
+        this.#changeStatus(MyPromise.REJECTED, error);
     }
 
     then(onFulfilled, onRejected) {
