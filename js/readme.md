@@ -3,6 +3,9 @@
 ## my-promise.js | 手写promise
 手写一个 promise
 
+可参 https://www.douyin.com/user/self?modal_id=7230026856819346749&showTab=favorite_collection
+
+
 ### 已完成
 - 构造函数
     - 执行传进来执行的方法, 将resolve/reject传递给参数中的方法
