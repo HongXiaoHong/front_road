@@ -14,6 +14,10 @@
 - 将 resolve/reject 执行的结果提取成一个公共的函数
 - resolve/reject 方法增加状态改变判断, 不是待定不做动作, 因为 promise 的状态是不可逆的
 - 异步错误无法捕获
+- 微任务队列实现
+  - node 里面使用 process 的 nextTick 进行实现
+  - 浏览器环境下, 使用 MutationObserver 实现
+  - 由于微任务是由环境提供, 除了以上两种情况, 使用 settimeout 默认实现
 
 ### 存在问题:
 

@@ -75,27 +75,43 @@ class MyPromise {
         }
     }
 
+    #runMicroTask(func) {
+        if (typeof process == "object" && typeof process.nextTick == "function") {
+            process.nextTick(func)
+        } else if (typeof MutationObserver == "function") {
+            const observer = new MutationObserver();
+            const textNode = document.createTextNode("1");
+            observer.observe(textNode, {characterData: true});
+            textNode.data = "2";
+
+        } else {
+            setTimeout(func, 0);
+        }
+    }
+
     // 判断一个对象是否是 promise 对象, 对象是函数或者object 都行, then 是一个函数
     #isPromise(o) {
         return o && (typeof o == "object" || typeof o == "function") && typeof o.then == "function";
     }
 
     #runOne(callback, resolve, reject) {
-        if (typeof callback !== "function") {
-            const changeStatus = this.#status === MyPromise.FULFILLED ? resolve : reject;
-            changeStatus(this.#result);
-            return;
-        }
-        try {
-            const data = callback(this.#result);
-            if (this.#isPromise(data)) {
-                data.then(resolve, reject);
-            } else {
-                resolve(data);
+        this.#runMicroTask(() => {
+            if (typeof callback !== "function") {
+                const changeStatus = this.#status === MyPromise.FULFILLED ? resolve : reject;
+                changeStatus(this.#result);
+                return;
             }
-        } catch (e) {
-            reject(e);
-        }
+            try {
+                const data = callback(this.#result);
+                if (this.#isPromise(data)) {
+                    data.then(resolve, reject);
+                } else {
+                    resolve(data);
+                }
+            } catch (e) {
+                reject(e);
+            }
+        });
     }
 }
 
@@ -105,23 +121,33 @@ class MyPromise {
 }) */
 // 如果不是明确对象调用, 或者是使用 call/apply/bind 指定调用者
 // 像这种把函数传递传递执行的, 就会把执行上下文置为全局
-new MyPromise(function (resolve, reject) {
+/*new MyPromise(function (resolve, reject) {
     console.log("我进入 promise 的构造函数啦");
     setTimeout(() => {
         // 存在问题 异步执行之后无法调用 then 方法
         resolve("hello promise");
     }, 0);
 }).then((data) => {
-    return new Promise((resolve, reject)=>{
-        console.log("then promise construct")
-        resolve("then promise");
-    });
+        return new Promise((resolve, reject) => {
+            console.log("then promise construct")
+            resolve("then promise");
+        });
     }
 )
     .then((data) => {
         console.log("data is ", data);
-    });
+    });*/
 
+setTimeout(()=>{
+    console.log(1)
+});
+
+new MyPromise((resolve, reject)=>{
+    console.log(2)
+    resolve(3);
+}).then((data)=>{
+    console.log(data)
+})
 
 /*
 * 结果:
