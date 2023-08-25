@@ -113,6 +113,10 @@ class MyPromise {
             }
         });
     }
+
+    catch(func) {
+        this.then(undefined, func);
+    }
 }
 
 /* new MyPromise((resolve, reject) => {
@@ -138,7 +142,8 @@ class MyPromise {
         console.log("data is ", data);
     });*/
 
-setTimeout(()=>{
+// 微任务测试
+/*setTimeout(()=>{
     console.log(1)
 });
 
@@ -147,8 +152,15 @@ new MyPromise((resolve, reject)=>{
     resolve(3);
 }).then((data)=>{
     console.log(data)
-})
+})*/
 
+// catch 测试
+/*new MyPromise((resolve, reject) => {
+    console.log("我进入 promise 的构造函数啦");
+    reject("hello promise");
+}).catch((error)=>{
+    console.error("catch something", error)
+})*/
 /*
 * 结果:
 new MyPromise(function (resolve, reject) {

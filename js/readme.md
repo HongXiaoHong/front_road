@@ -19,6 +19,28 @@
   - 浏览器环境下, 使用 MutationObserver 实现
   - 由于微任务是由环境提供, 除了以上两种情况, 使用 settimeout 默认实现
 
+--- 
+一道华丽的分界线
+
+上面是 promise A+ 的标准
+也就是 then 方法的 都算 promise, 也被叫做  promise like
+
+下面是 es6 的方法
+
+可以参见 mdn 的文档
+
+#### catch
+  参见 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
+
+Promise 实例的 catch() 方法用于注册一个在 promise 被拒绝时调用的函数。
+
+它会立即返回一个等效的 Promise 对象，这可以允许你链式调用其他 promise 的方法。
+
+此方法是 Promise.prototype.then(undefined, onRejected) 的一种简写形式。
+
+
+
+
 ### 存在问题:
 
 
