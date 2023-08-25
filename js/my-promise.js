@@ -1,4 +1,10 @@
-
+// 测试穿透
+new Promise((resolve, reject) => {
+    console.log("我进入 promise 的构造函数啦");
+    resolve("hello promise");
+}).then().then((data) => {
+    console.log("es6 Promise data is ", data);
+});
 
 class MyPromise {
     static PENDING = "PENDING";
@@ -56,16 +62,22 @@ class MyPromise {
         while (this.#handlers.length) {
             let {
                 onFulfilled,
-                onRejected
+                onRejected,
+                resolve,
+                reject
             } = this.#handlers.shift();
             if (this.#status === MyPromise.FULFILLED) {
                 if (typeof onFulfilled == "function") {
                     onFulfilled(this.#result)
+                } else {
+                    resolve(this.#result)
                 }
             }
             if (this.#status === MyPromise.REJECTED) {
                 if (typeof onRejected == "function") {
                     onRejected(this.#result)
+                } else {
+                    reject(this.#result)
                 }
             }
         }
@@ -84,7 +96,7 @@ new MyPromise(function (resolve, reject) {
         // 存在问题 异步执行之后无法调用 then 方法
         resolve("hello promise");
     }, 0);
-})
+}).then()
     .then((data) => {
         console.log("data is ", data);
     });
