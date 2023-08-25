@@ -145,6 +145,12 @@ class MyPromise {
         }
         return p;
     }
+
+    static reject(value) {
+        return new MyPromise((resolve, reject) => {
+            reject(value);
+        });
+    }
 }
 
 /* new MyPromise((resolve, reject) => {
@@ -204,11 +210,18 @@ new MyPromise((resolve, reject) => {
 })*/
 
 // resolve 静态方法测试
+/*
 const p = MyPromise.resolve(1);
 p.then((data=>{
     console.log(data);
 }))
 console.log(MyPromise.resolve(p) === p);
+*/
+
+// reject 方法测试
+Promise.reject(123).then(undefined, (error) => {
+    console.error(error)
+})
 
 /*
 * 结果:
