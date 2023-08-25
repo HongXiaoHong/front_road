@@ -117,14 +117,33 @@ class MyPromise {
     catch(func) {
         this.then(undefined, func);
     }
+
     finally(func) {
-        return this.then((data)=>{
+        return this.then((data) => {
             func();
             return data;
-        }, (error)=>{
+        }, (error) => {
             func();
             throw error;
         });
+    }
+
+    static resolve(value) {
+        // 从属本类 MyPromise 的情况下, 直接返回 value
+        if (value instanceof MyPromise) return value;
+
+        // 因为静态方法无法使用实例方法
+        let _resolve, _reject;
+        const p = new MyPromise((resolve, reject) => {
+            _resolve = resolve;
+            _reject = reject;
+        });
+        if (p.#isPromise(value)) {
+            value.then(_resolve, _reject)
+        } else {
+            _resolve(value);
+        }
+        return p;
     }
 }
 
@@ -172,7 +191,7 @@ new MyPromise((resolve, reject)=>{
 })*/
 
 // finally 测试
-
+/*
 new MyPromise((resolve, reject) => {
     resolve(1)
 }).finally(()=>{
@@ -182,7 +201,15 @@ new MyPromise((resolve, reject) => {
     reject(1)
 }).finally(()=>{
     console.log("finally run now")
-})
+})*/
+
+// resolve 静态方法测试
+const p = MyPromise.resolve(1);
+p.then((data=>{
+    console.log(data);
+}))
+console.log(MyPromise.resolve(p) === p);
+
 /*
 * 结果:
 new MyPromise(function (resolve, reject) {
