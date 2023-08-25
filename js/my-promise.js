@@ -117,6 +117,15 @@ class MyPromise {
     catch(func) {
         this.then(undefined, func);
     }
+    finally(func) {
+        return this.then((data)=>{
+            func();
+            return data;
+        }, (error)=>{
+            func();
+            throw error;
+        });
+    }
 }
 
 /* new MyPromise((resolve, reject) => {
@@ -161,6 +170,19 @@ new MyPromise((resolve, reject)=>{
 }).catch((error)=>{
     console.error("catch something", error)
 })*/
+
+// finally 测试
+
+new MyPromise((resolve, reject) => {
+    resolve(1)
+}).finally(()=>{
+    console.log("finally run now")
+})
+new MyPromise((resolve, reject) => {
+    reject(1)
+}).finally(()=>{
+    console.log("finally run now")
+})
 /*
 * 结果:
 new MyPromise(function (resolve, reject) {

@@ -38,8 +38,10 @@ Promise 实例的 catch() 方法用于注册一个在 promise 被拒绝时调用
 
 此方法是 Promise.prototype.then(undefined, onRejected) 的一种简写形式。
 
+#### finally
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally
 
-
+Promise 实例的 finally() 方法用于注册一个在 promise 敲定（兑现或拒绝）时调用的函数。它会立即返回一个等效的 Promise 对象，这可以允许你链式调用其他 promise 方法。
 
 ### 存在问题:
 
