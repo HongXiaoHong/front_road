@@ -160,25 +160,17 @@ tribute/tribute.html
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_gFeqTggsdu.png)
 
-
-
 ### magazine
 
 [Magazine](http://127.0.0.1:5500/magazine/magazine.html)
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/127.0.0.1_5500_magazine_magazine.html.png)
 
-
-
 ### 产品展示
 
 [product-landing/product-landing.html](http://127.0.0.1:5500/product-landing/product-landing.html)
 
-
-
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/product-landing_product-landing.html%20(2).png)
-
-
 
 ### 摩天轮
 
@@ -186,17 +178,11 @@ tribute/tribute.html
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_3aniIEQ2ox.gif)
 
-
-
 企鹅
 
 [Penguin --- 企鹅](http://127.0.0.1:5500/penguin/penguin.html)
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/msedge_QPnthRRdf1.gif)
-
-
-
-
 
 ### 项目展示
 
@@ -205,3 +191,32 @@ tribute/tribute.html
 展示你的项目
 
 ![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/personal_portfolio_personal_portfolio.html.png)
+
+## 分支中的项目
+
+### random-quote-machine | 随机名言时光机
+
+![](https://raw.githubusercontent.com/HongXiaoHong/images/main/db/random-quote-machineV2.gif)
+
+### music_magnetic_field_analyzer | 冰火两仪眼-太极-音乐磁场-解析器
+
+![music_magnetic_field_analyzer_v1](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/music_magnetic_field_analyzer_v1.gif)
+
+
+### simple_markdown_previewer | 平平无奇 markdown 编辑器
+
+实时翻译 markdown 内容
+
+![编辑效果](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_F6tmHmYTar.gif)
+
+
+### elementary_school_students_calculator | 小学生都不用计算器
+![小学生都不用计算器](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_KpFW5gudhW.gif)
+
+### d3 | d3 做了一个柱状图
+
+D3 高度可定制化
+就是说 对 svg 的知识要有所了解
+
+![柱状图](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/msedge_gSh3E23rfG.gif)
+
